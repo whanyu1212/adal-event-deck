@@ -48,7 +48,6 @@
 
   /* AdaL mascot on the Doors slide */
   --halo: rgba(255, 88, 152, 0.16);
-  --halo-ring: rgba(204, 29, 98, 0.28);
   --mascot-glow: drop-shadow(0 22px 26px rgba(23, 19, 31, 0.16));
   --holo-glow: rgba(255, 88, 152, 0.55);
 
@@ -76,7 +75,6 @@
   --sheen: rgba(255, 255, 255, 0.85);
 
   --halo: rgba(255, 88, 152, 0.26);
-  --halo-ring: rgba(255, 177, 204, 0.3);
   --mascot-glow: drop-shadow(0 0 22px rgba(255, 88, 152, 0.38));
   --holo-glow: rgba(255, 88, 152, 0.8);
 
@@ -218,17 +216,6 @@ pre {
 
 .deck-page span {
   color: var(--muted);
-  font-size: 20px;
-}
-
-.rehearsal-badge {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  padding: 6px 14px;
-  border: 2px dashed var(--warn);
-  border-radius: 6px;
-  color: var(--warn);
   font-size: 20px;
 }
 
@@ -496,39 +483,41 @@ body.is-idle .deck-theme-button {
   user-select: none;
 }
 
-/* A soft disc behind her shoulders, with a thin ring and a slowly turning dashed one */
-.mascot-halo {
+/* Feathered light behind the figure, with no circular outlines. */
+.mascot-aura {
   position: absolute;
-  left: 50%;
-  top: 0;
-  width: 156%;
-  aspect-ratio: 1;
-  transform: translateX(-50%);
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--halo) 0%, transparent 66%);
+  inset: 4% -35% 12% -30%;
+  pointer-events: none;
 }
 
-.mascot-halo::before,
-.mascot-halo::after {
+.mascot-aura::before,
+.mascot-aura::after {
   content: '';
   position: absolute;
-  border-radius: 50%;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 30% 44% at 58% 38%, var(--halo), transparent 100%),
+    radial-gradient(ellipse 27% 32% at 35% 66%, var(--halo), transparent 100%);
+  filter: blur(22px);
+  transform: rotate(-14deg);
+  animation: aura-drift 12s ease-in-out infinite alternate;
 }
 
-.mascot-halo::before {
-  inset: 16%;
-  border: 1.5px solid var(--halo-ring);
+.mascot-aura::after {
+  inset: 14% 6% -2% 18%;
+  opacity: 0.55;
+  animation-delay: -6s;
+  animation-direction: alternate-reverse;
 }
 
-.mascot-halo::after {
-  inset: 9%;
-  border: 1.5px dashed var(--halo-ring);
-  animation: halo-turn 90s linear infinite;
-}
-
-@keyframes halo-turn {
+@keyframes aura-drift {
+  from {
+    transform: translate(-8px, 10px) rotate(-14deg) scale(0.96);
+    opacity: 0.65;
+  }
   to {
-    transform: rotate(360deg);
+    transform: translate(12px, -12px) rotate(-5deg) scale(1.04);
+    opacity: 1;
   }
 }
 
@@ -920,49 +909,197 @@ body.is-idle .deck-theme-button {
   color: var(--muted);
 }
 
+.doors-docs {
+  margin-top: 16px;
+  font-size: 24px;
+}
+
+.doors-docs a {
+  color: var(--launch);
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  text-decoration-thickness: 1px;
+}
+
+.doors-docs a:hover {
+  color: var(--ink);
+}
+
 /* Welcome */
 
 .welcome {
   display: grid;
   align-content: start;
-  gap: 64px;
+  gap: 32px;
+}
+
+.welcome-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 48px;
+}
+
+.welcome-title {
+  display: grid;
+  gap: 10px;
+}
+
+.welcome-kicker {
+  font-family: var(--head);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.welcome-name {
+  display: block;
+  font-size: 96px;
+  line-height: 1;
+}
+
+.welcome-title-accent {
+  position: relative;
+  display: inline-block;
+  color: var(--launch);
+  font-style: italic;
+}
+
+.welcome-title-accent::after {
+  content: '';
+  position: absolute;
+  left: 2%;
+  right: 1%;
+  bottom: -8px;
+  height: 5px;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  transform: rotate(-2deg);
+  opacity: 0.65;
+}
+
+.welcome-signature {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding-left: 30px;
+  border-left: 1.5px solid var(--rule);
+}
+
+.welcome-spark {
+  width: 48px;
+  height: 48px;
+  color: var(--launch);
+}
+
+.welcome-signature div {
+  display: grid;
+  gap: 4px;
+  font-family: var(--head);
+  font-size: 21px;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+}
+
+.welcome-signature span:last-child {
+  color: var(--launch);
+}
+
+.welcome-columns {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 88px;
+  align-items: start;
+}
+
+.welcome-section-title {
+  margin-bottom: 24px;
+}
+
+.welcome-essentials {
+  padding-top: 31.5px;
 }
 
 .facts {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  row-gap: 0;
-  font-size: 32px;
+  font-size: 28px;
   line-height: 1.4;
 }
 
-.facts dt,
-.facts dd {
+.fact-row {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  align-items: center;
+  gap: 22px;
   padding: 28px 0;
   border-top: 1.5px solid var(--rule);
 }
 
-/* Drop the small label so it sits level with the first line of its answer */
 .facts dt {
-  padding-top: 40px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.fact-icon {
+  flex-shrink: 0;
+}
+
+.fact-icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  color: var(--launch);
+  background: var(--surface);
+  border: 1px solid var(--rule);
+}
+
+.fact-icon svg {
+  width: 27px;
+  height: 27px;
 }
 
 .facts dd {
   max-width: 36ch;
 }
 
+.facts-password {
+  display: block;
+  margin-top: 12px;
+}
+
 .facts-aside {
   color: var(--muted);
-  margin: 0 18px 0 40px;
+  margin-right: 10px;
   font-size: 0.8em;
 }
 
 /* Schedule */
 
 .schedule {
-  display: grid;
-  grid-template-columns: 560px 1fr;
-  align-items: start;
+  min-width: 0;
+  padding: 30px 36px;
+  background: var(--raised);
+  border: 1.5px solid var(--rule);
+  border-radius: 18px;
+  box-shadow: 0 12px 32px var(--surface);
+}
+
+.schedule .welcome-section-title {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.schedule .welcome-section-title::after {
+  content: '';
+  height: 2px;
+  flex: 1;
+  background: linear-gradient(to right, var(--launch), var(--rule));
 }
 
 .timeline {
@@ -974,9 +1111,9 @@ body.is-idle .deck-theme-button {
 .timeline li {
   position: relative;
   display: grid;
-  grid-template-columns: 130px 1fr;
-  padding: 17px 0 17px 48px;
-  font-size: 32px;
+  grid-template-columns: 100px 1fr;
+  padding: 14px 0 14px 32px;
+  font-size: 28px;
 }
 
 .timeline time {
@@ -997,20 +1134,96 @@ body.is-idle .deck-theme-button {
   font-weight: 650;
 }
 
-.timeline li.is-now::before {
+.timeline li::before {
   content: '';
   position: absolute;
-  left: -14px;
+  left: -7px;
   top: 50%;
-  width: 24px;
-  height: 24px;
-  margin-top: -12px;
+  width: 11px;
+  height: 11px;
+  margin-top: -5.5px;
   border-radius: 50%;
+  border: 2px solid var(--rule);
+  background: var(--raised);
+}
+
+.timeline li.is-now::before {
+  left: -11px;
+  width: 19px;
+  height: 19px;
+  margin-top: -9.5px;
+  border-color: var(--live);
   background: var(--live);
 }
 
 .timeline li.is-now time {
   color: var(--live);
+}
+
+/* One-shot entrances keep the agenda calm once everyone is reading it. */
+@media (prefers-reduced-motion: no-preference) {
+  .welcome-kicker {
+    animation: welcome-reveal 450ms ease-out both;
+  }
+
+  .welcome-name {
+    animation: welcome-reveal 650ms ease-out 100ms both;
+  }
+
+  .welcome-title-accent::after {
+    transform-origin: left;
+    animation: welcome-underline 800ms ease-out 450ms both;
+  }
+
+  .welcome-signature {
+    animation: welcome-reveal 650ms ease-out 250ms both;
+  }
+
+  .welcome-spark {
+    animation: welcome-spark-turn 1100ms ease-out 250ms both;
+  }
+
+  .fact-row {
+    animation: welcome-reveal 550ms ease-out both;
+    animation-delay: 160ms;
+  }
+
+  .fact-row:nth-child(2) { animation-delay: 280ms; }
+  .fact-row:nth-child(3) { animation-delay: 400ms; }
+
+  .welcome .schedule {
+    animation: welcome-reveal 650ms ease-out 180ms both;
+  }
+
+  .welcome .timeline li {
+    animation: welcome-reveal 420ms ease-out both;
+    animation-delay: calc(300ms + var(--agenda-order, 0) * 75ms);
+  }
+
+  .schedule .welcome-section-title::after {
+    transform-origin: left;
+    animation: agenda-rule 900ms ease-out 300ms both;
+  }
+}
+
+@keyframes welcome-reveal {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes welcome-underline {
+  from { transform: rotate(-2deg) scaleX(0); }
+  to { transform: rotate(-2deg) scaleX(1); }
+}
+
+@keyframes welcome-spark-turn {
+  from { transform: rotate(-75deg) scale(0.6); }
+  to { transform: rotate(0) scale(1); }
+}
+
+@keyframes agenda-rule {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
 }
 
 /* Build Club */

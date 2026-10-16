@@ -49,8 +49,6 @@ const base = nowParam
   : startedAt;
 const speed = Number(params.get('speed')) || 1;
 
-export const isRehearsalClock = Boolean(nowParam) || speed !== 1;
-
 export function now(): number {
   return base + (Date.now() - startedAt) * speed;
 }

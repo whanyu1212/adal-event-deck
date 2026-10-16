@@ -3,7 +3,7 @@ import { Stage } from '../components/Stage';
 import { event } from '../event';
 import { useDeck } from './Deck';
 import { ThemeButton } from '../components/ThemeButton';
-import { clockLabel, isRehearsalClock, useNow } from './time';
+import { clockLabel, useNow } from './time';
 
 /**
  * The presenter window: open it with P from the audience window, put it on your laptop screen,
@@ -26,7 +26,6 @@ export function Presenter() {
           <span className="pr-clock">{clockLabel(t)}</span>
           <span>
             {index + 1} of {slides.length}
-            {isRehearsalClock && ', rehearsal clock'}
           </span>
         </div>
 
