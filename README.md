@@ -1,1 +1,104 @@
-# adal-event-deck
+# Build Club Singapore × AdaL × SMUAI Build Night deck
+
+The web deck for **Build it. Launch it.** on Friday 30 October 2026, 6:30–9:30pm SGT.
+It's built with Astro (static output), one React component for the deck, and Motion for animation.
+
+The live demo runs in a terminal. The deck covers everything around it: doors open, housekeeping,
+Build Club, the demo section slides and backup video, the 75-minute build-block screen,
+show-and-tell and the close.
+
+## Run it
+
+```bash
+npm install
+```
+
+```bash
+npm run dev
+```
+
+Open http://localhost:4321.
+
+## Run it offline at the venue
+
+Build once while you have internet, then serve the build locally. Fonts are bundled and QR codes are drawn in the browser, so nothing loads from the network.
+
+```bash
+npm run build
+```
+
+```bash
+npm run preview
+```
+
+Use `npm run preview`, not a double-click on `dist/index.html`. The asset paths need a server.
+
+## Present it
+
+| Key | What it does |
+|---|---|
+| → ↓ Space Enter PageDown | Next slide (clickers send PageDown) |
+| ← ↑ PageUp Backspace | Previous slide |
+| Home / End | First / last slide |
+| F or double-click | Fullscreen |
+| P | Open the presenter window (notes, next slide, clock, buttons) |
+| B or . | Blank the screen. Esc or B again brings it back |
+| T | Switch between the light and dark theme (both windows follow) |
+| S / R / N / Shift+N | Show-and-tell only: start or pause the timer, reset it, next or previous presenter |
+
+The audience and presenter windows stay in step through `localStorage`, so you can drive either one.
+Each slide has its own link (`#/9` is the build block), so a reload lands on the same slide.
+
+### Light or dark
+
+The deck opens in the **light** theme: warm paper and ink, made for a brightly lit room.
+A projector can't show black darker than the lit screen it lands on, so dark slides wash out to grey under room lights.
+
+For a dim room, open it with `?theme=dark` (for example http://localhost:4321/?theme=dark), press **T**, or use the theme button.
+The button sits in the top-left corner of the screen, outside the slide, and fades out with the cursor when the mouse is still, so the room never sees it. The presenter window has one too.
+Reloading always goes back to the theme in the URL, so a dark rehearsal never carries over into the night.
+Check both on the venue projector during setup and keep whichever reads better from the back row.
+
+### Rehearse the clock
+
+The schedule, build-block countdown and timeline all follow Singapore time on the event date,
+whatever time zone your laptop is set to. To rehearse at a different time:
+
+- `?now=20:38` pretends it's 8:38pm on the night (24-hour time).
+- `?speed=30` runs the clock 30 times faster.
+
+For example, http://localhost:4321/?now=20:38&speed=10#/9 shows the build block just before the time warning.
+A "Rehearsal clock" badge shows whenever either is set. The show-and-tell timer always uses real time.
+
+## Edit the content
+
+Almost everything lives in [`src/event.ts`](src/event.ts): Wi-Fi, schedule, build-block times,
+track prompts, show-and-tell presenters and links. Text in `[square brackets]` is a placeholder.
+An empty link shows a "Link coming" box in place of its QR code.
+Keep each track prompt to about 90 characters. The build-block screen fits two lines per prompt, and a third line pushes the list off the bottom.
+
+Still to fill in before the night:
+
+- [ ] Wi-Fi network and password
+- [ ] Build Club dashboard link (QR on the Build Club and build-block slides)
+- [ ] Feedback survey link and next Build Club event link (close slide)
+- [ ] One line about Build Club Singapore
+- [ ] AdaL one-liner, confirmed with SylphAI
+- [ ] Show-and-tell presenters (fill in at 8:15, then rebuild, or leave the placeholders)
+- [ ] Backup recording at `public/demo-backup.mp4` (git ignores it, so copy it onto the presenting laptop)
+- [ ] Optional: swap `public/logos/build-club.png` for the horizontal Build Club logo used on the poster. The current file is the stacked logo from buildclub.ai at 488×469.
+
+Logos are in `public/logos/`. The colours and type follow AdaL's site (adalagent.ai) and the Build Night poster. The tokens are at the top of `global.css`.
+
+The slide order and speaker notes are in [`src/slides/index.tsx`](src/slides/index.tsx).
+Each slide is its own component in `src/slides/`, and styles are in [`src/styles/global.css`](src/styles/global.css).
+Only show AdaL features that are documented on [docs.sylph.ai](https://docs.sylph.ai).
+
+## Deploy
+
+The build is a plain static site in `dist/`, so any static host works:
+
+- **Vercel or Netlify:** import the repo. The build command is `npm run build` and the output directory is `dist`. Both detect Astro automatically.
+- **Cloudflare Pages:** framework preset Astro, build command `npm run build`, output `dist`.
+
+The deployed link is for sharing after the event. On the night, present from `npm run preview` on the laptop so venue Wi-Fi can't take the deck down.

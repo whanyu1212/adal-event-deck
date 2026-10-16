@@ -1,0 +1,30 @@
+---
+import '@fontsource-variable/plus-jakarta-sans';
+import '@fontsource-variable/space-grotesk';
+import '@fontsource-variable/jetbrains-mono';
+import '@fontsource-variable/fraunces/opsz.css';
+import '@fontsource-variable/fraunces/opsz-italic.css';
+import '../styles/global.css';
+import Deck from '../deck/Deck';
+import { event } from '../event';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={`${event.hosts} ${event.name}: ${event.theme.build} ${event.theme.launch}`} />
+    <link rel="icon" href="/logos/adal-icon.svg" type="image/svg+xml" />
+    <title>{event.name}</title>
+    <!-- Pick the theme before first paint, so the room never sees a flash of the other one -->
+    <script is:inline>
+      document.documentElement.dataset.theme =
+        new URLSearchParams(location.search).get('theme') === 'dark' ? 'dark' : 'light';
+    </script>
+  </head>
+  <body>
+    <Deck client:only="react" />
+    <noscript>This deck needs JavaScript.</noscript>
+  </body>
+</html>
