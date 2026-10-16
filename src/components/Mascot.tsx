@@ -51,7 +51,7 @@ export function Mascot({ height, className = '' }: { height: number; className?:
       transition={{ delay: 0.45, duration: 0.9, ease: [0.2, 0.7, 0.2, 1] }}
       aria-hidden
     >
-      <div className="mascot-halo" />
+      <div className="mascot-aura" />
       <div className="mascot-shadow" />
 
       <div className="mascot-figure">

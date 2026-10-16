@@ -3,7 +3,7 @@ import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { slides } from '../slides';
 import { Stage } from '../components/Stage';
 import { event } from '../event';
-import { clockLabel, isRehearsalClock, useNow } from './time';
+import { clockLabel, useNow } from './time';
 import { useShared } from './shared';
 import { useTalk } from './talk';
 import { themeFromUrl, useTheme } from './theme';
@@ -144,7 +144,6 @@ function Audience() {
           </motion.div>
         </AnimatePresence>
         {!slide.bare && <Footer index={index} />}
-        {isRehearsalClock && <div className="rehearsal-badge">Rehearsal clock</div>}
       </Stage>
       {/* Outside the stage, so it never lands on a slide; it hides with the idle cursor */}
       <ThemeButton theme={theme} setTheme={setTheme} className="deck-theme-button" />

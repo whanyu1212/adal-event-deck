@@ -19,7 +19,7 @@ const marks = [
 const pos = (t: number) => Math.min(1, Math.max(0, (t - start) / (submit - start)));
 
 function status(t: number) {
-  if (t < start) return { big: duration(start - t), caption: `until the build block starts at ${label(b.start)}` };
+  if (t < start) return { big: duration(start - t), caption: `until the build session starts at ${label(b.start)}` };
   if (t >= submit) return { big: null, caption: 'Submissions are closed. Show-and-tell is next.' };
   const big = duration(submit - t);
   if (t >= warning) return { big, caption: 'Five minutes left. Submit to the dashboard now.', urgent: true };
@@ -39,7 +39,7 @@ export function BuildBlock() {
       <div className="bb-head">
         <div>
           <h1 className="bb-title">
-            Build block <span>{label(b.start)} to {label(b.submit)}</span>
+            Build session <span>{label(b.start)} to {label(b.submit)}</span>
           </h1>
           {s.big ? <Digits text={s.big} className="bb-digits" /> : <p className="bb-closed">Time's up.</p>}
           <p className="bb-caption">{s.caption}</p>

@@ -36,7 +36,7 @@ export const event = {
   venue: '[Venue]',
 
   wifi: { network: '[Wi-Fi network]', password: '[Wi-Fi password]' },
-  help: 'Raise a hand. Helpers are on the floor all night.',
+  help: "Raise a hand and we'll come to you.",
   photography:
     "We're taking photos tonight. If you'd rather not be in them, tell a host and we'll keep you out.",
 
@@ -51,11 +51,11 @@ export const event = {
   },
 
   schedule: [
-    { time: '18:30', title: 'Doors open and setup clinic' },
+    { time: '18:30', title: 'Doors open & food' },
     { time: '19:00', title: 'Welcome' },
     { time: '19:05', title: 'Build Club Singapore' },
     { time: '19:10', title: 'What is AdaL, and a live demo' },
-    { time: '19:30', title: 'Build block' },
+    { time: '19:30', title: 'Build session' },
     { time: '20:45', title: 'Show-and-tell' },
     { time: '21:15', title: 'Feedback, shout-outs and group photo' },
     { time: '21:30', title: 'Wrap' },

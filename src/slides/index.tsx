@@ -1,7 +1,6 @@
 import type { ReactElement } from 'react';
 import { Doors } from './Doors';
 import { Welcome } from './Welcome';
-import { Schedule } from './Schedule';
 import { BuildClub } from './BuildClub';
 import { Adal } from './Adal';
 import { DemoPart } from './DemoPart';
@@ -27,21 +26,15 @@ export const slides: Slide[] = [
     title: 'Doors open',
     bare: true,
     render: () => <Doors />,
-    notes: `6:30 to 7:00. Leave this up during check-in and the setup clinic.
+    notes: `6:30 to 7:00. Leave this up during check-in and food.
 Helpers: install, sign-in, credits. Point non-coders to the browser-based IDE if SylphAI confirms it.`,
   },
   {
     id: 'welcome',
-    title: 'Welcome',
+    title: 'Welcome & tonight',
     render: () => <Welcome />,
-    notes: `7:00, host, 5 min (with the next slide).
-Wi-Fi, how to get help, photography notice and the opt-out.`,
-  },
-  {
-    id: 'schedule',
-    title: 'Tonight',
-    render: () => <Schedule />,
-    notes: `Walk the schedule quickly. The highlighted row follows the clock.`,
+    notes: `7:00, host, 5 min.
+Cover Wi-Fi, how to get help, photography and the opt-out, then walk through tonight's schedule. The highlighted row follows the clock.`,
   },
   {
     id: 'build-club',
@@ -82,10 +75,10 @@ Plays from public/demo-backup.mp4, which needs no network.`,
   },
   {
     id: 'build-block',
-    title: 'Build block',
+    title: 'Build session',
     bare: true,
     render: () => <BuildBlock />,
-    notes: `7:30 to 8:45. Leave this up for the whole block.
+    notes: `7:30 to 8:45. Leave this up for the whole build session.
 8:15 open show-and-tell sign-ups (5 spots). 8:40 time warning. 8:45 submissions close.
 Fill in presenters in src/event.ts, or edit on the night and rebuild.`,
   },

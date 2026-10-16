@@ -82,6 +82,9 @@ export function Doors() {
           <pre className="command">
             <code>{event.installCommand}</code>
           </pre>
+          <p className="doors-docs">
+            Getting started: <a href={event.links.docs} target="_blank" rel="noopener noreferrer" onDoubleClick={(e) => e.stopPropagation()}>docs.sylph.ai ↗</a>
+          </p>
         </div>
         <QR value={event.links.discord} size={190} caption="Join the AdaL Discord" />
       </section>

@@ -4,7 +4,7 @@ The web deck for **Build it. Launch it.** on Friday 30 October 2026, 6:30–9:30
 It's built with Astro (static output), one React component for the deck, and Motion for animation.
 
 The live demo runs in a terminal. The deck covers everything around it: doors open, housekeeping,
-Build Club, the demo section slides and backup video, the 75-minute build-block screen,
+Build Club, the demo section slides and backup video, the 75-minute build-session screen,
 show-and-tell and the close.
 
 ## Run it
@@ -47,7 +47,7 @@ Use `npm run preview`, not a double-click on `dist/index.html`. The asset paths 
 | S / R / N / Shift+N | Show-and-tell only: start or pause the timer, reset it, next or previous presenter |
 
 The audience and presenter windows stay in step through `localStorage`, so you can drive either one.
-Each slide has its own link (`#/9` is the build block), so a reload lands on the same slide.
+Each slide has its own link (`#/8` is the build session), so a reload lands on the same slide.
 
 ### Light or dark
 
@@ -61,26 +61,26 @@ Check both on the venue projector during setup and keep whichever reads better f
 
 ### Rehearse the clock
 
-The schedule, build-block countdown and timeline all follow Singapore time on the event date,
+The schedule, build-session countdown and timeline all follow Singapore time on the event date,
 whatever time zone your laptop is set to. To rehearse at a different time:
 
 - `?now=20:38` pretends it's 8:38pm on the night (24-hour time).
 - `?speed=30` runs the clock 30 times faster.
 
-For example, http://localhost:4321/?now=20:38&speed=10#/9 shows the build block just before the time warning.
-A "Rehearsal clock" badge shows whenever either is set. The show-and-tell timer always uses real time.
+For example, http://localhost:4321/?now=20:38&speed=10#/8 shows the build session just before the time warning.
+The show-and-tell timer always uses real time.
 
 ## Edit the content
 
-Almost everything lives in [`src/event.ts`](src/event.ts): Wi-Fi, schedule, build-block times,
+Almost everything lives in [`src/event.ts`](src/event.ts): Wi-Fi, schedule, build-session times,
 track prompts, show-and-tell presenters and links. Text in `[square brackets]` is a placeholder.
 An empty link shows a "Link coming" box in place of its QR code.
-Keep each track prompt to about 90 characters. The build-block screen fits two lines per prompt, and a third line pushes the list off the bottom.
+Keep each track prompt to about 90 characters. The build-session screen fits two lines per prompt, and a third line pushes the list off the bottom.
 
 Still to fill in before the night:
 
 - [ ] Wi-Fi network and password
-- [ ] Build Club dashboard link (QR on the Build Club and build-block slides)
+- [ ] Build Club dashboard link (QR on the Build Club and build-session slides)
 - [ ] Feedback survey link and next Build Club event link (close slide)
 - [ ] One line about Build Club Singapore
 - [ ] AdaL one-liner, confirmed with SylphAI
