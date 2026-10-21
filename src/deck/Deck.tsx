@@ -25,13 +25,34 @@ function presenterUrl() {
   return `${location.pathname}?${params.toString().replace('presenter=', 'presenter')}`;
 }
 
-/** Slide index, blackout and talk controls, shared by the audience and presenter windows. */
+/** How many extra key presses a slide holds before the deck moves on (0 for most slides). */
+const stepsOf = (i: number) => slides[i]?.steps ?? 0;
+
+/**
+ * Slide, step, blackout and talk controls, shared by the audience and presenter windows.
+ * A slide with `steps` reveals itself one key press at a time: next and back move through
+ * its steps first, and only then change slide. The slide and step are stored together, so
+ * a change of slide never shows the old slide for a frame at the new step.
+ */
 export function useDeck({ presenter = false } = {}) {
-  const [index, setIndex] = useShared('deck:index', 0);
+  const [pos, setPos] = useShared('deck:pos', { i: 0, s: 0 });
   const [blackout, setBlackout] = useShared('deck:blackout', false);
   const talk = useTalk();
   const [theme, setTheme] = useTheme();
-  const go = useCallback((i: number) => setIndex(clamp(i)), [setIndex]);
+  const index = clamp(pos.i);
+  const step = Math.min(stepsOf(index), pos.s);
+  /** Jump to a slide, at its first step (or at `at`). */
+  const go = useCallback((i: number, at = 0) => setPos({ i: clamp(i), s: at }), [setPos]);
+  /** Next key press: the next step if there is one, otherwise the next slide. */
+  const next = useCallback(() => {
+    if (step < stepsOf(index)) setPos({ i: index, s: step + 1 });
+    else if (index < last) setPos({ i: index + 1, s: 0 });
+  }, [index, step, setPos]);
+  /** Back key press: the previous step, otherwise the end of the previous slide. */
+  const back = useCallback(() => {
+    if (step > 0) setPos({ i: index, s: step - 1 });
+    else if (index > 0) setPos({ i: index - 1, s: stepsOf(index - 1) });
+  }, [index, step, setPos]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -39,8 +60,8 @@ export function useDeck({ presenter = false } = {}) {
       const target = e.target as HTMLElement;
       if (target.closest('video, input, textarea, select, button')) return;
       const k = e.key;
-      if (['ArrowRight', 'ArrowDown', 'PageDown', ' ', 'Enter'].includes(k)) go(index + 1);
-      else if (['ArrowLeft', 'ArrowUp', 'PageUp', 'Backspace'].includes(k)) go(index - 1);
+      if (['ArrowRight', 'ArrowDown', 'PageDown', ' ', 'Enter'].includes(k)) next();
+      else if (['ArrowLeft', 'ArrowUp', 'PageUp', 'Backspace'].includes(k)) back();
       else if (k === 'Home') go(0);
       else if (k === 'End') go(last);
       else if (k === 'b' || k === 'B' || k === '.') setBlackout(!blackout);
@@ -61,9 +82,9 @@ export function useDeck({ presenter = false } = {}) {
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [index, blackout, go, setBlackout, talk, presenter, theme, setTheme]);
+  }, [index, blackout, go, next, back, setBlackout, talk, presenter, theme, setTheme]);
 
-  return { index, go, blackout, setBlackout, talk, theme, setTheme };
+  return { index, step, go, next, back, blackout, setBlackout, talk, theme, setTheme };
 }
 
 const pad = (n: number) => String(n).padStart(2, '0');
@@ -86,7 +107,7 @@ function Footer({ index }: { index: number }) {
 }
 
 function Audience() {
-  const { index, go, blackout, setBlackout, theme, setTheme } = useDeck();
+  const { index, step, go, blackout, setBlackout, theme, setTheme } = useDeck();
   const calm = useReducedMotion();
   const slide = slides[index];
 
@@ -140,7 +161,7 @@ function Audience() {
             exit={{ opacity: 0 }}
             transition={{ duration: calm ? 0 : 0.25 }}
           >
-            {slide.render()}
+            {slide.render(step)}
           </motion.div>
         </AnimatePresence>
         {!slide.bare && <Footer index={index} />}

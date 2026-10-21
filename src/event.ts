@@ -88,6 +88,62 @@ export const event = {
   },
 
   adal: {
+    // "Meet AdaL" slide, stepped one key press at a time. Wording follows adalagent.ai,
+    // docs.sylph.ai and the adal-cli README.
+    intro: 'Every coding agent can build. AdaL also handles the launch, straight from your codebase.',
+    byline: { made: 'Created by SylphAI', named: 'Named after Ada Lovelace' },
+
+    // The Ada Lovelace beat. Keep the claim hedged: historians dispute "first programmer",
+    // and the Analytical Engine was never built, so her program never ran in her lifetime.
+    ada: {
+      heading: 'Ada Lovelace, 1843',
+      fact: "In Note G she set out, step by step, how Babbage's Analytical Engine could compute Bernoulli numbers. It's widely called the first computer program.",
+      card: 'Note G',
+      ops: 25,
+    },
+
+    // "Run Ada's program": two key presses. The first runs her table up to the bug in op 4,
+    // the second swaps the division and finishes. The numbers come from slides/noteG.ts.
+    run: {
+      label: 'Note G, run today',
+      heading: "Let's run Ada's program.",
+      columns: ['Op', 'Her operation', 'Meant to give', 'Value (n = 4)'],
+      bug: 'divided the wrong way round',
+      fix: 'swapped: fixed',
+      rest: 'Two loops, ops 13–23',
+      restMeant: 'B₇, looping for B₃ and B₅',
+      closing: 'The first published program had a bug. Over 180 years later, we have agents for that.',
+    },
+
+    // One per key press. `icon` is what floats over her palm while it is on screen.
+    pillars: [
+      {
+        word: 'Builds.',
+        proof: 'Review-first, in your terminal. Any model, no lock-in.',
+        icon: 'terminal',
+        launch: false,
+      },
+      {
+        word: 'Launches.',
+        proof: 'Browser use, deep research, image, audio and video.',
+        icon: 'globe',
+        launch: true,
+      },
+      {
+        word: 'Connects.',
+        proof: 'Slack, Notion, Linear, GitHub, Stripe. Plus skills and an SDK.',
+        icon: 'plug',
+        launch: false,
+      },
+    ],
+
+    // The closing step types this out. It is a script, not a live session.
+    terminal: {
+      command: 'adal',
+      signedIn: '✓ signed in',
+      prompt: 'add dark mode, then draft the launch post',
+      hint: 'Run it in any project folder. The first run signs you in.',
+    },
     // Confirm this wording with SylphAI before the night.
     oneLiner:
       'AdaL is an AI agent that writes and checks your code, then helps you make what launches it.',
