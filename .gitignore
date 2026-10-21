@@ -5,3 +5,5 @@ dist/
 .claude/
 # The backup demo recording is large; keep it out of git and copy it in before the event.
 public/demo-backup.mp4
+
+.vercel/
