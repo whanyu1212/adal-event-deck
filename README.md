@@ -107,3 +107,20 @@ The build is a plain static site in `dist/`, so any static host works:
 - **Cloudflare Pages:** framework preset Astro, build command `npm run build`, output `dist`.
 
 The deployed link is for sharing after the event. On the night, present from `npm run preview` on the laptop so venue Wi-Fi can't take the deck down.
+
+## Continuous integration and Vercel
+
+GitHub Actions runs `npm ci`, `npm run check`, and `npm run build` on pull
+requests to `main` and pushes to `main`, using Node.js 22. Set `Check and build`
+as a required status check in the repository's main-branch rules.
+
+Import `whanyu1212/adal-event-deck` into Vercel with the repository root as the
+root directory and `main` as the production branch. Use Node.js 22.x in the
+project settings. `vercel.json` selects Astro, runs type checks before the
+production build, and publishes `dist/`. Vercel's Git integration provides
+branch previews and deploys merged changes to production; no Vercel token is
+needed in GitHub Actions.
+
+The backup recording `public/demo-backup.mp4` is intentionally ignored by Git
+and is not included in Git-based deployments. The connector GIF and screenshots
+are tracked and deploy with the site.
