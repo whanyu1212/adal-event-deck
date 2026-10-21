@@ -37,8 +37,8 @@ Use `npm run preview`, not a double-click on `dist/index.html`. The asset paths 
 
 | Key | What it does |
 |---|---|
-| → ↓ Space Enter PageDown | Next slide (clickers send PageDown) |
-| ← ↑ PageUp Backspace | Previous slide |
+| → ↓ Space Enter PageDown | Next step or slide (clickers send PageDown) |
+| ← ↑ PageUp Backspace | Previous step or slide |
 | Home / End | First / last slide |
 | F or double-click | Fullscreen |
 | P | Open the presenter window (notes, next slide, clock, buttons) |
@@ -46,8 +46,13 @@ Use `npm run preview`, not a double-click on `dist/index.html`. The asset paths 
 | T | Switch between the light and dark theme (both windows follow) |
 | S / R / N / Shift+N | Show-and-tell only: start or pause the timer, reset it, next or previous presenter |
 
+**Meet AdaL** (slide 3) steps through seven key presses before the deck moves on: the Ada Lovelace
+beat, a run of her Note G program that stops on its bug and then fixes it, then Builds, Launches and
+Connects, then a scripted terminal. The presenter window shows "step 2 of 7". Pressing back from the next slide lands on the last step. Any slide can do this by
+setting `steps` in `src/slides/index.tsx` and reading the `step` its `render` receives.
+
 The audience and presenter windows stay in step through `localStorage`, so you can drive either one.
-Each slide has its own link (`#/8` is the build session), so a reload lands on the same slide.
+Each slide has its own link (`#/9` is the build session), so a reload lands on the same slide.
 
 ### Light or dark
 
@@ -67,7 +72,7 @@ whatever time zone your laptop is set to. To rehearse at a different time:
 - `?now=20:38` pretends it's 8:38pm on the night (24-hour time).
 - `?speed=30` runs the clock 30 times faster.
 
-For example, http://localhost:4321/?now=20:38&speed=10#/8 shows the build session just before the time warning.
+For example, http://localhost:4321/?now=20:38&speed=10#/9 shows the build session just before the time warning.
 The show-and-tell timer always uses real time.
 
 ## Edit the content

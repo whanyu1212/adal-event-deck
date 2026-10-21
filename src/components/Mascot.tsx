@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { motion, useReducedMotion } from 'motion/react';
+import { useEffect, useState, type ReactNode } from 'react';
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 
 /*
   AdaL, the mascot from the Build Night poster, standing on the slide's rule line.
@@ -37,7 +37,19 @@ function useBlink(enabled: boolean) {
   return shut;
 }
 
-export function Mascot({ height, className = '' }: { height: number; className?: string }) {
+/**
+ * `holo` swaps what floats over her palm. Give it a new `key` and an icon (an <svg> that fills its
+ * width) and the old one dissolves into the new; leave it out for the AdaL mark.
+ */
+export function Mascot({
+  height,
+  className = '',
+  holo,
+}: {
+  height: number;
+  className?: string;
+  holo?: { key: string; icon: ReactNode };
+}) {
   const calm = useReducedMotion();
   const shut = useBlink(!calm);
   const width = Math.round(height * ASPECT);
@@ -70,7 +82,17 @@ export function Mascot({ height, className = '' }: { height: number; className?:
           <div className="holo-ring holo-ring-a" />
           <div className="holo-ring holo-ring-b" />
           <div className="holo-mark">
-            <img src={asset('logos/adal-icon.svg')} alt="" draggable={false} />
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.div
+                key={holo?.key ?? 'adal'}
+                initial={calm ? false : { opacity: 0, scale: 0.7, filter: 'blur(6px)' }}
+                animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+                exit={calm ? undefined : { opacity: 0, scale: 1.15, filter: 'blur(6px)' }}
+                transition={{ duration: calm ? 0 : 0.22 }}
+              >
+                {holo?.icon ?? <img src={asset('logos/adal-icon.svg')} alt="" draggable={false} />}
+              </motion.div>
+            </AnimatePresence>
           </div>
           {Array.from({ length: 9 }, (_, i) => (
             <span

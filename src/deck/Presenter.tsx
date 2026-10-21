@@ -10,15 +10,18 @@ import { clockLabel, useNow } from './time';
  * and drive either window. Both stay in step.
  */
 export function Presenter() {
-  const { index, go, blackout, setBlackout, talk, theme, setTheme } = useDeck({ presenter: true });
+  const { index, step, go, next: advance, back, blackout, setBlackout, talk, theme, setTheme } = useDeck({
+    presenter: true,
+  });
   const t = useNow(1000);
   const slide = slides[index];
   const next = slides[index + 1];
+  const steps = slide.steps ?? 0;
 
   return (
     <main className="presenter">
       <section className="pr-current">
-        <Stage className="pr-stage">{slide.render()}</Stage>
+        <Stage className="pr-stage">{slide.render(step)}</Stage>
       </section>
 
       <aside className="pr-side">
@@ -26,6 +29,7 @@ export function Presenter() {
           <span className="pr-clock">{clockLabel(t)}</span>
           <span>
             {index + 1} of {slides.length}
+            {steps > 0 && ` · step ${step + 1} of ${steps + 1}`}
           </span>
         </div>
 
@@ -33,7 +37,7 @@ export function Presenter() {
           {next ? (
             <>
               <p>Next: {next.title}</p>
-              <Stage className="pr-stage">{next.render()}</Stage>
+              <Stage className="pr-stage">{next.render(0)}</Stage>
             </>
           ) : (
             <p>Last slide</p>
@@ -48,10 +52,10 @@ export function Presenter() {
         </div>
 
         <div className="pr-controls">
-          <button onClick={() => go(index - 1)} disabled={index === 0}>
+          <button onClick={back} disabled={index === 0 && step === 0}>
             Previous
           </button>
-          <button onClick={() => go(index + 1)} disabled={!next}>
+          <button onClick={advance} disabled={!next && step >= steps}>
             Next
           </button>
           <button onClick={() => setBlackout(!blackout)}>{blackout ? 'Show screen' : 'Blank screen'}</button>
