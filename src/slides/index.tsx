@@ -67,10 +67,10 @@ In a second AdaL session, start the promo video and competitor research with the
   {
     id: 'model-choice',
     title: 'Multimodal. No model vendor lock-in.',
-    steps: 7,
+    steps: 2,
     render: (step) => <ModelChoice step={step} />,
     notes: `About one minute. AdaL lets you choose between model providers within the same workflow, so you are not tied to a single model vendor.
-Use the next key to advance the illustrated terminal: /model switches among Anthropic, OpenAI and Google, then /model config demonstrates high, low and max effort. After the effort demo, advance once more to reveal the access options. Available effort levels vary by model.
+Three frames, two advances: step 0 shows /model with Anthropic, OpenAI and Google; step 1 shows /model config with max reasoning effort selected; step 2 highlights the flexible access options. Available effort levels vary by model.
 The right side summarizes code, image, video and audio capabilities.
 Also mention BYOAK, custom endpoints compatible with the provider API, and local Ollama models (preview). BYOAK does not cover image, video or voice generation; those use AdaL credits. Local models currently have no image input.
 References: https://docs.sylph.ai/customize/bring-your-own-api-key/ and https://docs.sylph.ai/customize/local-models/
@@ -98,22 +98,25 @@ The animation can be stopped or replayed; reduced-motion mode starts with a stil
   },
   {
     id: 'capabilities',
-    title: 'One request. A whole workflow',
-    steps: 3,
-    render: (step) => <Capabilities step={step} />,
-    notes: `About one minute. Capabilities are built-in tools and instructions that AdaL loads when needed. Several can work in the same conversation. Unlike the community skills slide, these come with AdaL.
-Advance to load Research, Images, and Video in sequence. Explain how the request combines these built-in capabilities. Browser use also supports checking real flows; mention it verbally if useful. Video Producer can use supplied footage or generated clips, add audio and captions, and keep revisions you can compare or restore.
-The example prompt illustrates a combined workflow; it is not a claim that this output has already been generated. /capabilities shows what is available and active; it is not an on/off switch.
-Omit model catalogs, pricing, internal loading details and the autonomy auditor from this short introduction. Mention writing assistance verbally if useful.
-Sources: https://docs.sylph.ai/features/capabilities/ ; https://docs.sylph.ai/features/video-producer/ ; https://docs.sylph.ai/features/image-generation/
-The image/video page contains older references to agent modes; use the current capabilities page for automatic loading behavior.`,
+    title: 'Terminal speed. Desktop clarity.',
+    steps: 0,
+    render: () => <Capabilities />,
+    notes: `About 45–60 seconds. Show that AdaL fits both terminal-native developers and visual product builders.
+On the left: AdaL CLI gives you fast keyboard-first coding, git worktrees, headless mode and the SDK.
+On the right: the AdaL Desktop recording shows issue triage in a project chat, with projects, Schedule and Connectors in the visual workspace.
+Both recordings play at 10× speed, with native playback controls. Reduced-motion mode starts paused. Advance once to go straight to the live demo.
+Type /ide inside the CLI to open the current project in AdaL Desktop. Both share the same account, models, skills and project sessions.
+Sources: https://docs.sylph.ai/getting-started/desktop-app and https://docs.sylph.ai/features/video-producer/`,
   },
   {
     id: 'demo-build',
     title: 'Live demo: Build & launch',
     render: () => <DemoPart />,
-    notes: `About 15 min. Start in session 1: make a small code change and check it in AdaL's browser.
-Then switch to session 2 for competitor research and the promo video. Use prepared results if they are still running. Finish by writing launch copy live.
+    notes: `About 15 min. Follow one project through a unified code-to-launch session, not separate Build and Launch tracks. Explain that the multi-minute research and video renders were pre-run so we can inspect the full session without the render wait, then finish the launch live.
+01 · Build & verify: update the app, inspect the diff in AdaL with Review Agent, and verify the live UI directly in AdaL's browser.
+02 · Research & produce: walk through the pre-run Deep Research competitor and audience findings, inspect Image Studio visuals, and trace the Video Producer timeline from v1 to v3. Be explicit that these heavy lifts were prepared, not rendered live on stage.
+03 · Publish & automate: chain @skills on the same session context for human-sounding launch copy, then connect X, LinkedIn, Slack and Notion for the live finishing steps. Confirm destinations and content before publishing.
+Bridge to the next slide: now it is your turn for the 75-minute build session.
 The backup demo is after the closing slide if needed.`,
   },
   {

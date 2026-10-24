@@ -58,7 +58,7 @@ export function useDeck({ presenter = false } = {}) {
     const onKey = (e: KeyboardEvent) => {
       if (e.metaKey || e.ctrlKey || e.altKey) return;
       const target = e.target as HTMLElement;
-      if (target.closest('video, input, textarea, select, button')) return;
+      if (target.closest('a, video, input, textarea, select, button')) return;
       const k = e.key;
       if (['ArrowRight', 'ArrowDown', 'PageDown', ' ', 'Enter'].includes(k)) next();
       else if (['ArrowLeft', 'ArrowUp', 'PageUp', 'Backspace'].includes(k)) back();
