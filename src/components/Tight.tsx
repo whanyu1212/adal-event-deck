@@ -1,4 +1,4 @@
-/** Plus Jakarta's full stop sits wide at display sizes; this pulls a trailing one in. */
+/** Pull a trailing full stop in slightly at display sizes. */
 export function Tight({ text }: { text: string }) {
   if (!text.endsWith('.')) return <>{text}</>;
   return (

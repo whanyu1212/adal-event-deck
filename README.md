@@ -1,4 +1,4 @@
-# Build Club Singapore × AdaL × SMUAI Build Night deck
+# Build Club Singapore × AdaL × SMUAI × NUS Product Club Build Night deck
 
 The web deck for **Build it. Launch it.** on Friday 30 October 2026, 6:30–9:30pm SGT.
 It's built with Astro (static output), one React component for the deck, and Motion for animation.

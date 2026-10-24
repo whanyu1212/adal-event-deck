@@ -3,7 +3,7 @@
 // An empty link shows a "link coming" box instead of a QR code.
 
 export const event = {
-  hosts: 'Build Club Singapore × AdaL × SMUAI',
+  hosts: 'Build Club Singapore × AdaL × SMUAI × NUS Product Club',
   name: 'Build Night',
   theme: { build: 'Build it.', launch: 'Launch it.' },
 
@@ -18,6 +18,12 @@ export const event = {
       srcOnDark: 'logos/smuai.png',
       alt: 'SMU Artificial Intelligence Club',
       className: 'logo-smuai',
+    },
+    {
+      src: 'logos/nus-product-club.png',
+      srcOnDark: 'logos/nus-product-club-dark.png',
+      alt: 'NUS Product Club',
+      className: 'logo-nus-product-club',
     },
   ],
 
