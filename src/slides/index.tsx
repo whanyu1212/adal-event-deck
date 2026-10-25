@@ -9,7 +9,6 @@ import { Skills } from './Skills';
 import { Connectors } from './Connectors';
 import { Capabilities } from './Capabilities';
 import { DemoPart } from './DemoPart';
-import { DemoBackup } from './DemoBackup';
 import { BuildBlock } from './BuildBlock';
 import { ShowAndTell } from './ShowAndTell';
 import { Close } from './Close';
@@ -79,11 +78,15 @@ Command reference: https://docs.sylph.ai/getting-started/models/`,
   },
   {
     id: 'skills',
-    title: 'Give AdaL your way of working',
+    title: 'Try any skill. Keep only what works.',
     steps: 2,
     render: (step) => <Skills step={step} />,
     notes: `About 45–60 seconds. Models give you choice; skills let you reuse a way of working.
-Explain reuse, share and discover. Invoke your own, your team's or a community skill by its @skills path without installing the skill itself. Some skills still require software, accounts or API keys.
+Land two points: AdaL gives you a skills marketplace (atskills.one, 63,000+ skills) AND skill management (:save, :install, /skills).
+Step 0, try once: reference a skill by its @skills path. It loads for that task only, so there's no context bloat, and nothing is installed, so there's nothing to clean up after a one-off try.
+Step 1, chain: combine marketplace skills with your repo's own .atskills/ in one prompt.
+Step 2, keep & manage: :save versions a copy in the repo, :install auto-triggers it, /skills shows what's loaded.
+Some skills still require software, accounts or API keys.
 The example is from https://atskills.one/: @skills:gh:SylphAI-Inc/skills/skills/glowmotion draw the auth flow.
 This is an example prompt, not a live run. Optionally demonstrate it in AdaL during the live demo. The QR opens the skills hub. Skills are an open standard; do not claim exclusivity to AdaL.`,
   },
@@ -115,37 +118,27 @@ Sources: https://docs.sylph.ai/getting-started/desktop-app and https://docs.sylp
     notes: `About 15 min. Follow one project through a unified code-to-launch session, not separate Build and Launch tracks. Explain that the multi-minute research and video renders were pre-run so we can inspect the full session without the render wait, then finish the launch live.
 01 · Build & verify: update the app, inspect the diff in AdaL with Review Agent, and verify the live UI directly in AdaL's browser.
 02 · Research & produce: walk through the pre-run Deep Research competitor and audience findings, inspect Image Studio visuals, and trace the Video Producer timeline from v1 to v3. Be explicit that these heavy lifts were prepared, not rendered live on stage.
-03 · Publish & automate: chain @skills on the same session context for human-sounding launch copy, then connect X, LinkedIn, Slack and Notion for the live finishing steps. Confirm destinations and content before publishing.
-Bridge to the next slide: now it is your turn for the 75-minute build session.
-The backup demo is after the closing slide if needed.`,
+03 · Launch: write the launch copy from the same session context (optionally with an @skills writing skill, if it fits on the day), then post through connected X, LinkedIn, Slack and Notion. Confirm destinations and content before publishing.
+Bridge to the next slide: now it is your turn for the 75-minute build session.`,
   },
   {
     id: 'build-block',
     title: 'Build session',
-    bare: true,
     render: () => <BuildBlock />,
     notes: `7:30 to 8:45. Leave this up for the whole build session.
-8:15 open show-and-tell sign-ups (5 spots). 8:40 time warning. 8:45 submissions close.
-Fill in presenters in src/event.ts, or edit on the night and rebuild.`,
+8:15 open show-and-tell sign-ups (5 spots). 8:40 time warning. 8:45 submissions close.`,
   },
   {
     id: 'show-and-tell',
     title: 'Show-and-tell',
     render: () => <ShowAndTell />,
-    notes: `8:45, 30 min, five 5-minute demos.
-Keys: S start or pause the timer, R reset it, N next presenter, Shift+N previous.`,
+    notes: `8:45, 30 min, five 5-minute demos. Presenters join the Zoom from the QR and share their screen; no fixed line-up.
+Set the Zoom link, meeting ID and passcode in src/event.ts (showAndTell.zoom) before the night. Keep time on your phone; there's no on-screen timer.`,
   },
   {
     id: 'close',
     title: 'Close',
     render: () => <Close />,
     notes: `9:15 to 9:30. Survey QR, shout-outs, freebies if confirmed, next Build Club event, group photo.`,
-  },
-  {
-    id: 'demo-backup',
-    title: 'Backup demo',
-    render: () => <DemoBackup />,
-    notes: `Only if the live demo fails. Click the video to play.
-Plays from public/demo-backup.mp4, which needs no network.`,
   },
 ];

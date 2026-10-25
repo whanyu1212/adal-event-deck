@@ -79,14 +79,13 @@ export const event = {
 
   showAndTell: {
     minutesEach: 5,
-    // Fill in on the night as people sign up. Five slots.
-    presenters: [
-      { name: '[Presenter 1]', project: '[Project]' },
-      { name: '[Presenter 2]', project: '[Project]' },
-      { name: '[Presenter 3]', project: '[Project]' },
-      { name: '[Presenter 4]', project: '[Project]' },
-      { name: '[Presenter 5]', project: '[Project]' },
-    ],
+    // How many demos fit in the 30-minute slot. No fixed names: people join the Zoom and share.
+    slots: 5,
+    zoom: {
+      link: '', // paste the Zoom join link here; the QR code appears once it is set
+      meetingId: '[Meeting ID]',
+      passcode: '[Passcode]',
+    },
   },
 
   buildClub: {
@@ -155,28 +154,15 @@ export const event = {
       'AdaL is an AI agent that writes and checks your code, then helps you make what launches it.',
   },
 
+  // Build session slide: a general direction for each, deliberately not a to-do list.
   tracks: {
     build: {
       title: 'Build',
-      blurb: 'Improve the product itself.',
-      prompts: [
-        'Add a small feature to your side project, then have AdaL check it in its own browser.',
-        'Ask AdaL to explain an unfamiliar repo and write a README for it.',
-        'Connect an MCP server or write a custom tool for an API you use.',
-        'Build on headless mode or the SDK, such as a CI job or a bot.',
-        'Write a custom skill, system prompt or lifecycle hook and share it.',
-      ],
+      direction: 'Make your product better.',
     },
     launch: {
       title: 'Launch',
-      blurb: 'Build what launches it. No coding needed.',
-      prompts: [
-        'Generate a launch image and a short promo video for your product.',
-        "Rewrite your landing page or launch post so it doesn't sound like AI.",
-        'Research competitors with web search and the browser, then write a positioning summary.',
-        "Find what's trending in your space and draft launch posts around it.",
-        'Set up a scheduled prompt that sends a daily digest of mentions.',
-      ],
+      direction: 'Help it find its people.',
     },
   },
 } as const;

@@ -18,7 +18,7 @@ export function BuildClub() {
           </li>
           <li>
             Want to demo it? Show-and-tell sign-ups open at {label(b.signupsOpen)}. There are{' '}
-            {event.showAndTell.presenters.length} spots, so {b.signupHow}.
+            {event.showAndTell.slots} spots, so {b.signupHow}.
           </li>
         </ol>
       </div>

@@ -11,21 +11,19 @@ const submit = at(b.submit);
 
 const marks = [
   { at: start, time: b.start, text: 'Start', side: 'below' },
-  { at: signups, time: b.signupsOpen, text: 'Show-and-tell sign-ups open', side: 'below' },
-  { at: warning, time: b.warning, text: 'Five minutes left', side: 'above' },
+  { at: signups, time: b.signupsOpen, text: 'Show-and-tell sign-ups', side: 'below' },
   { at: submit, time: b.submit, text: 'Submit', side: 'below' },
 ] as const;
 
 const pos = (t: number) => Math.min(1, Math.max(0, (t - start) / (submit - start)));
 
 function status(t: number) {
-  if (t < start) return { big: duration(submit - start), caption: `75-minute build session · starts at ${label(b.start)} (submit by ${label(b.submit)})` };
-  if (t >= submit) return { big: null, caption: 'Submissions are closed. Show-and-tell is next.' };
+  if (t < start) return { big: duration(submit - start), caption: `Starts at ${label(b.start)}` };
+  if (t >= submit) return { big: null, caption: 'Show-and-tell is next.' };
   const big = duration(submit - t);
-  if (t >= warning) return { big, caption: 'Five minutes left. Submit to the dashboard now.', urgent: true };
-  if (t >= signups)
-    return { big, caption: `left to build. Show-and-tell sign-ups are open: ${b.signupHow}.` };
-  return { big, caption: `left to build. Submit by ${label(b.submit)}.` };
+  if (t >= warning) return { big, caption: 'Five minutes left. Submit now.', urgent: true };
+  if (t >= signups) return { big, caption: `left to build · show-and-tell sign-ups are open, ${b.signupHow}` };
+  return { big, caption: 'left to build' };
 }
 
 export function BuildBlock() {
@@ -44,7 +42,7 @@ export function BuildBlock() {
           {s.big ? <Digits text={s.big} className="bb-digits" /> : <p className="bb-closed">Time's up.</p>}
           <p className="bb-caption">{s.caption}</p>
         </div>
-        <QR value={event.links.dashboard} size={196} caption="Submit your project" />
+        <QR value={event.links.dashboard} size={196} caption={`Submit by ${label(b.submit)}`} />
       </div>
 
       <div className="bb-line" aria-hidden>
@@ -64,18 +62,11 @@ export function BuildBlock() {
         {live && <div className="bb-now" style={{ left: `${p * 100}%` }} />}
       </div>
 
-      <div className="tracks bb-tracks">
+      <div className="bb-paths">
         {(['build', 'launch'] as const).map((k) => (
-          <section key={k} className={`track track-${k}`}>
-            <h2>
-              {event.tracks[k].title} <span>{event.tracks[k].blurb}</span>
-            </h2>
-            <ul>
-              {event.tracks[k].prompts.map((prompt) => (
-                <li key={prompt}>{prompt}</li>
-              ))}
-            </ul>
-          </section>
+          <p key={k} className={`bb-path is-${k}`}>
+            <strong>{event.tracks[k].title}</strong> {event.tracks[k].direction}
+          </p>
         ))}
       </div>
     </div>

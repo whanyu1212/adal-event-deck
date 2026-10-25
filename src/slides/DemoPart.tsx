@@ -4,55 +4,61 @@ import { Tight } from '../components/Tight';
 const stages = [
   {
     id: 'build',
-    label: '01 · BUILD & VERIFY',
-    mode: 'Live + workspace',
+    name: 'Build',
+    live: true,
     title: 'Ship the product update.',
-    steps: ['Update the app & inspect the diff in AdaL', "Verify the live UI directly in AdaL's browser"],
-    capabilities: ['Code & Browser Use', 'Review Agent'],
+    steps: ['Update the app & review the diff', "Check the live UI in AdaL's browser"],
+    tools: ['Code & Browser Use', 'Review Agent'],
   },
   {
     id: 'produce',
-    label: '02 · RESEARCH & PRODUCE',
-    mode: 'Pre-run walkthrough',
+    name: 'Research & produce',
+    live: false,
     title: 'Position it & cut the promo.',
-    steps: ['Walk through Deep Research competitor & audience findings', 'Inspect generated visuals & Video Producer timeline (v1 → v3)'],
-    capabilities: ['Deep Research', 'Image Studio', 'Video Producer'],
+    steps: ['Competitor & audience research', 'Generated visuals & promo video'],
+    tools: ['Deep Research', 'Image Studio', 'Video Producer'],
   },
   {
     id: 'publish',
-    label: '03 · PUBLISH & AUTOMATE',
-    mode: 'Live on stage',
+    name: 'Launch',
+    live: true,
     title: 'Launch it to the world.',
-    steps: ['Chain @skills on the session context for human-sounding launch copy', 'Connect your channels (X, LinkedIn, Slack, Notion) to ship it'],
-    capabilities: ['@skills', 'Connectors'],
+    steps: ['Write the launch copy', 'Post via X, LinkedIn, Slack & Notion'],
+    tools: ['Connectors'],
   },
 ];
 
 export function DemoPart() {
   return (
     <div className="slide demo-part">
-      <EditorialHeader kicker="Live walkthrough · End-to-end flow" signature={['Pre-run heavy lifts', 'Live finishing steps']}>
+      <EditorialHeader kicker="Live demo · 15 min · Code to launch">
         Let’s take one project <span className="welcome-title-accent"><Tight text="from code to launch." /></span>
       </EditorialHeader>
-      <p className="lead">We pre-ran the multi-minute research and video renders so we can walk through the full session and finish the launch live.</p>
-      <div className="demo-roadmap" aria-label="One project, from code to launch">{stages.map((stage) => (
-        <section key={stage.id} className={`demo-session${stage.id === 'publish' ? ' is-live' : ''}`}>
-          <div className="demo-session-head">
-            <p className="label">{stage.label}</p>
-            <span className="demo-session-mode">{stage.mode}</span>
-          </div>
-          <h2>{stage.title}</h2>
-          <ol>{stage.steps.map((text, i) => <li key={text}><span>0{i + 1}</span>{text}</li>)}</ol>
-          <div className="demo-session-capabilities" aria-label="Capabilities used">
-            {stage.capabilities.map((capability) => <span key={capability}>{capability}</span>)}
-          </div>
-        </section>
-      ))}</div>
-      <div className="demo-part-summary">
-        <span>15-minute walkthrough</span>
-        <p>Pre-run heavy lifts skip the render wait.</p>
-        <strong>Up next → Your 75-minute build session</strong>
-      </div>
+      <p className="lead">Research and video renders take minutes, so we pre-ran those. Everything else is live.</p>
+
+      <ol className="demo-track" aria-label="One project, from code to launch">
+        {stages.map((stage, idx) => (
+          <li key={stage.id} className={`demo-stop ${stage.live ? 'is-live' : 'is-prerun'}`}>
+            <div className="demo-stop-top">
+              <span className="demo-stop-num" aria-hidden="true">0{idx + 1}</span>
+              <span className="demo-stop-name">{stage.name}</span>
+            </div>
+            <div className="demo-stop-rail" aria-hidden="true">
+              <span className="demo-stop-dot" />
+            </div>
+            <p className="demo-stop-mode">{stage.live ? 'Live' : 'Pre-run'}</p>
+            <h2>{stage.title}</h2>
+            <ul className="demo-stop-steps">
+              {stage.steps.map((text) => <li key={text}>{text}</li>)}
+            </ul>
+            <p className="demo-stop-tools">{stage.tools.join(' · ')}</p>
+          </li>
+        ))}
+      </ol>
+
+      <p className="demo-next">
+        Up next <span aria-hidden="true">→</span> <strong>Your 75-minute build session</strong>
+      </p>
     </div>
   );
 }
