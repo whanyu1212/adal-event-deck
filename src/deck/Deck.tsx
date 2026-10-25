@@ -5,7 +5,6 @@ import { Stage } from '../components/Stage';
 import { event } from '../event';
 import { clockLabel, useNow } from './time';
 import { useShared } from './shared';
-import { useTalk } from './talk';
 import { themeFromUrl, useTheme } from './theme';
 import { Presenter } from './Presenter';
 import { ThemeButton } from '../components/ThemeButton';
@@ -29,7 +28,7 @@ function presenterUrl() {
 const stepsOf = (i: number) => slides[i]?.steps ?? 0;
 
 /**
- * Slide, step, blackout and talk controls, shared by the audience and presenter windows.
+ * Slide, step and blackout controls, shared by the audience and presenter windows.
  * A slide with `steps` reveals itself one key press at a time: next and back move through
  * its steps first, and only then change slide. The slide and step are stored together, so
  * a change of slide never shows the old slide for a frame at the new step.
@@ -37,7 +36,6 @@ const stepsOf = (i: number) => slides[i]?.steps ?? 0;
 export function useDeck({ presenter = false } = {}) {
   const [pos, setPos] = useShared('deck:pos', { i: 0, s: 0 });
   const [blackout, setBlackout] = useShared('deck:blackout', false);
-  const talk = useTalk();
   const [theme, setTheme] = useTheme();
   const index = clamp(pos.i);
   const step = Math.min(stepsOf(index), pos.s);
@@ -73,18 +71,14 @@ export function useDeck({ presenter = false } = {}) {
         document.fullscreenElement
           ? document.exitFullscreen().catch(() => {})
           : document.documentElement.requestFullscreen?.().catch(() => {});
-      else if (slides[index].id === 'show-and-tell' && /^[srn]$/i.test(k)) {
-        if (k.toLowerCase() === 's') talk.toggle();
-        else if (k.toLowerCase() === 'r') talk.reset();
-        else talk.move(e.shiftKey ? -1 : 1);
-      } else return;
+      else return;
       e.preventDefault();
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [index, blackout, go, next, back, setBlackout, talk, presenter, theme, setTheme]);
+  }, [index, blackout, go, next, back, setBlackout, presenter, theme, setTheme]);
 
-  return { index, step, go, next, back, blackout, setBlackout, talk, theme, setTheme };
+  return { index, step, go, next, back, blackout, setBlackout, theme, setTheme };
 }
 
 const pad = (n: number) => String(n).padStart(2, '0');

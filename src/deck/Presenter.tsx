@@ -10,7 +10,7 @@ import { clockLabel, useNow } from './time';
  * and drive either window. Both stay in step.
  */
 export function Presenter() {
-  const { index, step, go, next: advance, back, blackout, setBlackout, talk, theme, setTheme } = useDeck({
+  const { index, step, go, next: advance, back, blackout, setBlackout, theme, setTheme } = useDeck({
     presenter: true,
   });
   const t = useNow(1000);
@@ -60,13 +60,6 @@ export function Presenter() {
           </button>
           <button onClick={() => setBlackout(!blackout)}>{blackout ? 'Show screen' : 'Blank screen'}</button>
           <ThemeButton theme={theme} setTheme={setTheme} />
-          {slide.id === 'show-and-tell' && (
-            <>
-              <button onClick={talk.toggle}>{talk.running ? 'Pause timer' : 'Start timer'}</button>
-              <button onClick={talk.reset}>Reset timer</button>
-              <button onClick={() => talk.move(1)}>Next presenter</button>
-            </>
-          )}
         </div>
 
         <select

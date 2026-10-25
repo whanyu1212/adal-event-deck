@@ -7,20 +7,20 @@ import { Tight } from '../components/Tight';
 const modes = [
   {
     id: 'reference',
-    tab: '01 · Reference',
+    tab: '01 · Try once',
     suffix: '',
-    suffixLabel: 'ephemeral · 0 resident tok',
+    suffixLabel: 'this task only · 0 resident tok',
     lines: ['@skills:gh:SylphAI-Inc/skills/skills/glowmotion'],
     prompt: 'draw our OAuth + JWT auth flow',
     traces: [
-      '↳ fetched SKILL.md + scripts/render.py on demand',
-      '↳ 0 resident tokens · nothing installed globally',
+      '↳ loaded SKILL.md + scripts/render.py for this task only',
+      '↳ no context bloat · nothing installed, nothing to remove',
     ],
-    status: '✓ Rendered glowmotion architecture flow (0 violations)',
+    status: '✓ Rendered the auth flow · skill not kept, nothing to clean up',
   },
   {
     id: 'chain',
-    tab: '02 · Chain skills',
+    tab: '02 · Chain',
     suffix: '+2 chained',
     suffixLabel: '3 skills · 1 prompt',
     lines: [
@@ -37,7 +37,7 @@ const modes = [
   },
   {
     id: 'lifecycle',
-    tab: '03 · Save & install',
+    tab: '03 · Keep & manage',
     suffix: ':save · :install',
     suffixLabel: 'git-tracked or auto-triggered',
     lines: [
@@ -49,34 +49,41 @@ const modes = [
       '↳ :save copies folder to .atskills/ for team git review',
       '↳ :install adds 1 line to .autotrigger (fires automatically)',
     ],
-    status: '✓ Manage resident skills & token cost anytime with /skills',
+    status: '✓ Kept only the keeper · see what’s loaded anytime with /skills',
   },
 ];
 
-const anatomyParts = [
-  { file: 'SKILL.md', role: 'Instructions', desc: 'Step-by-step workflow loaded only when relevant' },
-  { file: 'scripts/', role: 'Executable tools', desc: 'Deterministic Python/bash scripts run by the agent' },
-  { file: 'templates/', role: 'References', desc: 'Schemas, examples & brand tokens read on demand' },
+const pillars = [
+  {
+    file: 'atskills.one',
+    role: 'Marketplace',
+    desc: 'Browse 63,000+ skills: yours, your team’s, the community’s. Copy a path and use it.',
+  },
+  {
+    file: '/skills',
+    role: 'Manager',
+    desc: 'Save keepers to your repo, auto-trigger favourites, and see what’s loaded in one place.',
+  },
 ];
 
 const tiers = [
   {
-    title: 'Reference on the fly',
+    title: 'Try it once',
     code: '@skills:<path>',
     cost: '0 resident tokens',
-    desc: 'Run any of 63,600+ community or GitHub skills for one task without installing.',
+    desc: 'Loads for this task only. Not installed, so there’s nothing to remove afterwards.',
   },
   {
     title: 'Chain across sources',
     code: '@skills:a @skills:b',
-    cost: 'Compose workflows',
-    desc: 'Mix public GitHub skills with your repo’s own .atskills/ in a single prompt.',
+    cost: 'Still no bloat',
+    desc: 'Mix marketplace skills with your repo’s own .atskills/ in a single prompt.',
   },
   {
-    title: 'Save or Auto-trigger',
+    title: 'Keep what works',
     code: ':save · :install',
-    cost: '.atskills/ & /skills',
-    desc: 'Use :save to version a copy in git, or :install to auto-fire on matching tasks.',
+    cost: 'Managed in /skills',
+    desc: ':save versions a copy in your repo; :install auto-triggers it on matching tasks.',
   },
 ];
 
@@ -92,8 +99,8 @@ export function Skills({ step = 0 }: { step?: number }) {
 
   return (
     <div className="slide tour-slide skills-tour">
-      <EditorialHeader kicker="ATSkills · Open Agent Skills Protocol" signature={['63,600+ public skills', 'Use · Save · Auto-trigger']}>
-        Give AdaL your <span className="welcome-title-accent"><Tight text="way of working." /></span>
+      <EditorialHeader kicker="Skills marketplace · Skill manager · Built into AdaL" signature={['63,000+ skills', 'Find · Try · Keep']}>
+        Try any skill. <span className="welcome-title-accent"><Tight text="Keep only what works." /></span>
       </EditorialHeader>
 
       <div className="skills-showcase">
@@ -237,11 +244,11 @@ export function Skills({ step = 0 }: { step?: number }) {
         <aside className="skills-explainer">
           <section className="skills-anatomy-card">
             <div className="model-side-head">
-              <p className="label">What is a skill? · Just files in git</p>
-              <span>On-demand expertise</span>
+              <p className="label">Two jobs · One place</p>
+              <span>Find it · Manage it</span>
             </div>
-            <div className="skills-anatomy-grid">
-              {anatomyParts.map((part) => (
+            <div className="skills-anatomy-grid is-pillars">
+              {pillars.map((part) => (
                 <div key={part.file} className="skills-anatomy-item">
                   <div className="skills-anatomy-top">
                     <code>{part.file}</code>
@@ -255,8 +262,8 @@ export function Skills({ step = 0 }: { step?: number }) {
 
           <section className="skills-tiers-card" onDoubleClick={(e) => e.stopPropagation()}>
             <div className="model-side-head">
-              <p className="label">Three lifecycle tiers · One protocol</p>
-              <span>No AGENTS.md bloat</span>
+              <p className="label">Trying a skill costs nothing</p>
+              <span>No context bloat · No cleanup</span>
             </div>
             <div className="skills-tiers-list">
               {tiers.map((tier, idx) => {
@@ -290,8 +297,8 @@ export function Skills({ step = 0 }: { step?: number }) {
 
           <div className="skills-hub-bar">
             <div className="skills-hub-copy">
-              <p className="label">Skills Hub · Open Standard (MIT)</p>
-              <strong>Yours. Your team’s. 63,600+ from the community.</strong>
+              <p className="label">Skills marketplace · Open standard (MIT)</p>
+              <strong>Browse 63,000+ skills. Use any without installing.</strong>
               <a href="https://atskills.one/" target="_blank" rel="noopener noreferrer" onDoubleClick={(e) => e.stopPropagation()}>
                 atskills.one ↗
               </a>

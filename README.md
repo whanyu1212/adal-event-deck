@@ -4,7 +4,7 @@ The web deck for **Build it. Launch it.** on Friday 30 October 2026, 6:30–9:30
 It's built with Astro (static output), one React component for the deck, and Motion for animation.
 
 The live demo runs in a terminal. The deck covers everything around it: doors open, housekeeping,
-Build Club, the demo section slides and backup video, the 75-minute build-session screen,
+Build Club, the demo section slides, the 75-minute build-session screen,
 show-and-tell and the close.
 
 ## Run it
@@ -89,8 +89,7 @@ Still to fill in before the night:
 - [ ] Feedback survey link and next Build Club event link (close slide)
 - [ ] One line about Build Club Singapore
 - [ ] AdaL one-liner, confirmed with SylphAI
-- [ ] Show-and-tell presenters (fill in at 8:15, then rebuild, or leave the placeholders)
-- [ ] Backup recording at `public/demo-backup.mp4` (git ignores it, so copy it onto the presenting laptop)
+- [ ] Show-and-tell Zoom link, meeting ID and passcode (`showAndTell.zoom` in `src/event.ts`)
 - [ ] Optional: swap `public/logos/build-club.png` for the horizontal Build Club logo used on the poster. The current file is the stacked logo from buildclub.ai at 488×469.
 
 Logos are in `public/logos/`. The colours and type follow AdaL's site (adalagent.ai) and the Build Night poster. The tokens are at the top of `global.css`.
@@ -121,6 +120,4 @@ production build, and publishes `dist/`. Vercel's Git integration provides
 branch previews and deploys merged changes to production; no Vercel token is
 needed in GitHub Actions.
 
-The backup recording `public/demo-backup.mp4` is intentionally ignored by Git
-and is not included in Git-based deployments. The connector GIF and screenshots
-are tracked and deploy with the site.
+The connector GIF and screenshots are tracked and deploy with the site.
