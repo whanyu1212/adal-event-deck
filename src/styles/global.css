@@ -3828,6 +3828,156 @@ body.is-idle .deck-theme-button {
   .demo-stop.is-live .demo-stop-dot::after { animation: none; opacity: 0; }
 }
 
+/* AdaL changelog: five eras on one rail, revealed one at a time.
+   The rail and dots stay put; only each era's content fades and lifts in. */
+.changelog-rail {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 28px;
+  margin-top: 64px;
+  padding: 0;
+  list-style: none;
+}
+
+.changelog-rail::before {
+  content: '';
+  position: absolute;
+  top: 13px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--rule);
+}
+
+.changelog-era {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.changelog-era > :not(.changelog-dot) {
+  opacity: .16;
+  transform: translateY(8px);
+  transition: opacity .45s, transform .45s, border-color .45s, color .45s;
+}
+
+.changelog-era.is-revealed > :not(.changelog-dot) { opacity: 1; transform: none; }
+
+.changelog-dot {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 3px solid var(--rule);
+  transition: background .45s, border-color .45s, box-shadow .45s;
+}
+
+.changelog-era.is-revealed .changelog-dot { border-color: var(--launch); }
+.changelog-era.is-current .changelog-dot { background: var(--launch); box-shadow: 0 0 0 9px var(--halo); }
+
+.changelog-when {
+  margin-top: 26px;
+  font: 600 22px/1 var(--mono);
+  letter-spacing: .04em;
+  color: var(--muted);
+}
+
+.changelog-era.is-current .changelog-when { color: var(--launch); }
+
+.changelog-version {
+  align-self: flex-start;
+  margin-top: 16px;
+  padding: 6px 12px;
+  font: 500 15px/1.3 var(--head);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+}
+
+.changelog-era h2 {
+  min-height: 2.12em;
+  margin: 20px 0 24px;
+  font: 650 42px/1.06 var(--display);
+  letter-spacing: -0.025em;
+}
+
+/* Open type, no boxes: a short accent rule, then the highlights as plain lines. */
+.changelog-era ul {
+  display: grid;
+  gap: 20px;
+  padding: 26px 0 0;
+  list-style: none;
+  border-top: 1.5px solid var(--rule);
+}
+
+.changelog-era.is-current h2 { color: var(--launch); }
+.changelog-era.is-current ul { border-top-color: var(--launch); }
+
+.changelog-era ul li {
+  font-size: 26px;
+  line-height: 1.32;
+  color: var(--muted);
+}
+
+.changelog-era.is-revealed ul li { color: var(--ink); }
+
+.changelog-source {
+  margin-top: 28px;
+  font: 500 18px/1.4 var(--mono);
+  color: var(--muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .changelog-era > *, .changelog-dot { transition: none; transform: none; }
+}
+
+/* Build + Launch: a one-line title and tighter panel headings make room for the GTM strip. */
+.build-launch .editorial-header .title { font-size: 66px; }
+.build-launch .tour-panels { margin-top: 30px; }
+.build-launch .tour-panel { padding: 24px 28px; }
+.build-launch .tour-panel h2 { font-size: 50px; margin: 14px 0 8px; }
+.build-launch .tour-caption { min-height: 0; margin-bottom: 18px; }
+
+/* The GTM "not just for founders" strip under the three panels. Open type, no cards. */
+.tour-audiences {
+  display: grid;
+  grid-template-columns: auto repeat(3, minmax(0, 1fr));
+  align-items: baseline;
+  margin-top: 30px;
+  padding-top: 22px;
+  border-top: 1.5px solid var(--rule);
+}
+
+.tour-audiences dt {
+  padding-right: 40px;
+  font: 600 18px/1.3 var(--head);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--launch);
+}
+
+.tour-audiences dd {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-left: 30px;
+  border-left: 1.5px solid var(--rule);
+  font: 650 30px/1.15 var(--display);
+  letter-spacing: -0.02em;
+}
+
+.tour-audiences dd span {
+  font: 500 15px/1.3 var(--head);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+
 @media (prefers-reduced-motion: reduce) {
   .tour-panel, .skill-loaded, .skills-diagram, .connectors-examples section, .capability-chain > section, .model-own {
     transition: none;
