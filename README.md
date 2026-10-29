@@ -52,7 +52,7 @@ Connects, then a scripted terminal. The presenter window shows "step 2 of 7". Pr
 setting `steps` in `src/slides/index.tsx` and reading the `step` its `render` receives.
 
 The audience and presenter windows stay in step through `localStorage`, so you can drive either one.
-Each slide has its own link (`#/9` is the build session), so a reload lands on the same slide.
+Each slide has its own link (`#/13` is the build session), so a reload lands on the same slide.
 
 ### Light or dark
 
@@ -72,8 +72,21 @@ whatever time zone your laptop is set to. To rehearse at a different time:
 - `?now=20:38` pretends it's 8:38pm on the night (24-hour time).
 - `?speed=30` runs the clock 30 times faster.
 
-For example, http://localhost:4321/?now=20:38&speed=10#/9 shows the build session just before the time warning.
+For example, http://localhost:4321/?now=20:38&speed=10#/13 shows the build session just before the time warning.
 The show-and-tell timer always uses real time.
+
+### Start the build session by hand
+
+The build session (slide 13) follows `buildBlock.start` in `src/event.ts` (7:30) on its own.
+If the programme runs over, press **Start 1:15:00 countdown** when the room actually starts building.
+The button is in the presenter window, and in the top-right corner of the audience screen when you move the mouse.
+The full 75 minutes then run from that moment in every window, and a reload keeps them.
+Sign-ups, the five-minute warning and submit move with it, and the slide shows the new times.
+Restarting a session that is already running takes a second click. **Back to schedule** goes back to 7:30.
+A start pressed during a rehearsal is forgotten two hours after its session ends.
+
+The timeline above the marks is a little pixel-art mission: the rocket flies from Earth to the AdaL planet as time runs out, blasting asteroids on the way.
+It boosts in the last five minutes and plants a flag when time is up. Reduced-motion mode keeps it still.
 
 ## Edit the content
 

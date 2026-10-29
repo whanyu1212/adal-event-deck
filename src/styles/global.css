@@ -958,6 +958,35 @@ body.is-idle .deck-theme-button {
   font-size: 24px;
 }
 
+/* The promo code, for early arrivals setting up during check-in */
+.doors-promo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 18px;
+  font-size: 22px;
+}
+
+.doors-install p.doors-promo {
+  color: var(--muted);
+}
+
+.doors-promo-offer {
+  font-family: var(--head);
+  font-weight: 650;
+  color: var(--launch);
+}
+
+.doors-promo code {
+  padding: 4px 12px;
+  font: 700 24px/1.2 var(--mono);
+  color: var(--heading);
+  background: var(--raised);
+  border: 1.5px solid var(--rule);
+  border-radius: 8px;
+  user-select: all;
+}
+
 .doors-docs a {
   color: var(--launch);
   text-decoration: underline;
@@ -1877,6 +1906,55 @@ body.is-idle .deck-theme-button {
   gap: 60px;
 }
 
+.bb-side {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+}
+
+.bb-promo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 14px 24px 14px 14px;
+  background: #fff;
+  border: 2px solid var(--ink);
+  border-radius: 20px;
+  box-shadow: 8px 8px 0 var(--adal-pink);
+}
+
+:root[data-theme='dark'] .bb-promo {
+  background: var(--raised);
+  border-color: var(--heading);
+}
+
+.bb-promo .qr figcaption {
+  display: none;
+}
+
+.bb-promo-copy {
+  display: grid;
+  gap: 6px;
+}
+
+.bb-promo-copy .label {
+  font-size: 15px;
+  letter-spacing: 0.16em;
+  color: var(--launch);
+}
+
+.bb-promo-copy code {
+  font: 700 27px/1.15 var(--mono);
+  color: var(--heading);
+  user-select: all;
+}
+
+.bb-promo-copy span {
+  font-size: 18px;
+  color: var(--muted);
+}
+
+.bb-side > .qr,
 .bb-head > .qr {
   display: flex;
   flex-direction: column;
@@ -1886,6 +1964,7 @@ body.is-idle .deck-theme-button {
   text-align: center;
 }
 
+.bb-side > .qr figcaption,
 .bb-head > .qr figcaption {
   max-width: 220px;
   font-size: 20px;
@@ -1926,17 +2005,36 @@ body.is-idle .deck-theme-button {
   color: var(--warn);
 }
 
+/* The timeline: a pixel-art space mission (RocketRun) over a plain rail with the marks.
+   The panel is a night sky in both themes, like the deck's illustrated app windows. */
 .bb-line {
   position: relative;
-  height: 136px;
-  margin: 54px 0 20px;
+  margin: 22px 0 6px;
+}
+
+.bb-scene {
+  display: block;
+  width: 100%;
+  height: 248px;
+  border-radius: 20px;
+  background:
+    radial-gradient(ellipse 40% 90% at 88% 50%, rgba(255, 88, 152, 0.16), transparent 70%),
+    radial-gradient(ellipse 30% 80% at 6% 100%, rgba(80, 140, 255, 0.16), transparent 70%),
+    linear-gradient(180deg, #0f0b18 0%, #1b1428 100%);
+  box-shadow: 0 18px 40px var(--app-shadow), inset 0 0 0 1.5px rgba(255, 255, 255, 0.06);
+}
+
+/* Inset (inline margins from RocketRun's X0 / X1_FROM_RIGHT) to the rocket's path */
+.bb-track {
+  position: relative;
+  height: 92px;
 }
 
 .bb-rail,
 .bb-fill {
   position: absolute;
   left: 0;
-  top: 52px;
+  top: 22px;
   height: 6px;
   border-radius: 3px;
 }
@@ -1953,7 +2051,7 @@ body.is-idle .deck-theme-button {
 
 .bb-mark {
   position: absolute;
-  top: 44px;
+  top: 14px;
   width: 0;
 }
 
@@ -2014,39 +2112,6 @@ body.is-idle .deck-theme-button {
   transform: none;
 }
 
-.bb-now {
-  position: absolute;
-  top: 55px;
-  width: 0;
-  transition: left 1s linear;
-}
-
-.bb-now::before,
-.bb-now::after {
-  content: '';
-  position: absolute;
-  left: -14px;
-  top: -14px;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: var(--live);
-}
-
-.bb-now::after {
-  animation: bb-pulse 2.4s ease-out infinite;
-}
-
-@keyframes bb-pulse {
-  from {
-    transform: scale(1);
-    opacity: 0.55;
-  }
-  to {
-    transform: scale(3.2);
-    opacity: 0;
-  }
-}
 
 
 /* One quiet line: a direction, not a to-do list */
@@ -2173,9 +2238,127 @@ body.is-idle .deck-theme-button {
   color: var(--ink);
 }
 
+/* Promo code redemption, between the live demo and the build session */
+
+.redeem {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 56px;
+  padding-bottom: 136px; /* clear the shared footer */
+}
+
+.redeem-body {
+  display: flex;
+  align-items: center;
+  gap: 88px;
+}
+
+.redeem-body > .qr {
+  width: auto !important; /* grow around the 300px code plus padding */
+  padding: 18px 18px 16px;
+  background: #fff;
+  border: 2.5px solid var(--ink);
+  border-radius: 24px;
+  box-shadow: 12px 12px 0 var(--adal-pink);
+}
+
+.redeem-body > .qr figcaption {
+  color: #625a6d;
+  font-weight: 600;
+}
+
+.redeem-main {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 40px;
+}
+
+/* The code, poster-style like the ambassador card */
+.redeem-code {
+  justify-self: start;
+  display: grid;
+  gap: 10px;
+  padding: 26px 36px 28px;
+  background: #fff;
+  border: 2.5px solid var(--ink);
+  border-radius: 24px;
+  box-shadow: 12px 12px 0 var(--adal-pink);
+}
+
+:root[data-theme='dark'] .redeem-code {
+  background: var(--raised);
+  border-color: var(--heading);
+}
+
+.redeem-code .label {
+  color: var(--launch);
+}
+
+.redeem-code-text {
+  font: 700 66px/1.05 var(--mono);
+  letter-spacing: -0.01em;
+  color: var(--heading);
+  user-select: all;
+}
+
+.redeem-valid {
+  font-size: 24px;
+  color: var(--muted);
+}
+
+.redeem-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.redeem-steps li {
+  display: grid;
+  align-content: start;
+  gap: 6px;
+  padding-top: 18px;
+  border-top: 2px solid var(--rule);
+  font-size: 23px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.redeem-num {
+  font: 700 18px/1 var(--display);
+  color: var(--launch);
+}
+
+.redeem-steps strong {
+  font: 650 32px/1.15 var(--display);
+  letter-spacing: -0.02em;
+  color: var(--heading);
+}
+
+.redeem-steps b,
+.redeem-existing b {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.redeem-existing {
+  font-size: 22px;
+  color: var(--muted);
+}
+
 /* Close */
 
 .close {
+  display: grid;
+  grid-template-columns: 1fr 480px;
+  column-gap: 64px;
+  align-items: start;
+}
+
+.close-main {
   display: grid;
   align-content: start;
   gap: 32px;
@@ -2184,11 +2367,133 @@ body.is-idle .deck-theme-button {
 .close-codes {
   margin-top: 80px;
   display: flex;
-  gap: 120px;
+  gap: 64px;
 }
 
 .close-codes .qr {
   width: 300px !important;
+}
+
+/* Ambassador card, after the Global Ambassador Program poster:
+   a white card with an ink border, a pink offset shadow and AdaL perched on top. */
+.ambassador {
+  position: relative;
+  margin-top: 104px;
+  padding: 40px 40px 34px;
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  background: #fff;
+  border: 2.5px solid var(--ink);
+  border-radius: 28px;
+  box-shadow: 14px 14px 0 var(--adal-pink);
+}
+
+:root[data-theme='dark'] .ambassador {
+  background: var(--raised);
+  border-color: var(--heading);
+}
+
+.ambassador-mascot {
+  position: absolute;
+  right: 44px;
+  bottom: calc(100% - 8px); /* her feet rest on the card's top edge */
+  height: 176px;
+  filter: var(--mascot-glow);
+  pointer-events: none;
+  user-select: none;
+}
+
+.ambassador-logo {
+  height: 40px;
+  margin-bottom: 18px;
+}
+
+.ambassador-title {
+  font-family: var(--display);
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.ambassador-title span {
+  display: block;
+}
+
+.ambassador-title .is-accent {
+  color: var(--launch);
+}
+
+.ambassador-pitch {
+  margin-top: 20px;
+  font-size: 24px;
+  font-weight: 560;
+  line-height: 1.3;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+.ambassador-perks {
+  margin-top: 6px;
+  max-width: 30ch;
+  text-wrap: balance;
+  font-size: 20px;
+  line-height: 1.35;
+  color: var(--muted);
+}
+
+.ambassador-apply {
+  margin-top: 24px;
+  padding-top: 24px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  border-top: 1.5px dashed var(--rule);
+  text-align: left;
+}
+
+.ambassador-apply .qr figcaption {
+  display: none;
+}
+
+.ambassador-cta {
+  display: grid;
+  gap: 6px;
+}
+
+.ambassador-now {
+  font-family: var(--display);
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--launch);
+}
+
+.ambassador-scan {
+  font-family: var(--head);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.ambassador-more {
+  margin-top: 14px;
+  font-size: 20px;
+  color: var(--muted);
+}
+
+.ambassador-url {
+  font-family: var(--display);
+  font-size: 27px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--launch);
 }
 
 /* Presenter window (real screen pixels, not stage pixels) */
@@ -2216,7 +2521,7 @@ body.is-idle .deck-theme-button {
 
 .pr-side {
   display: grid;
-  grid-template-rows: auto auto 1fr auto auto auto;
+  grid-template-rows: auto auto 1fr auto auto auto auto;
   gap: 16px;
   min-height: 0;
 }
@@ -2292,8 +2597,82 @@ body.is-idle .deck-theme-button {
   font-size: 14px;
 }
 
+/* Build session start button (real screen pixels). In the presenter window it sits above
+   the slide buttons; on the audience screen it sits in the top-right corner, outside the
+   slide, and fades out with the idle cursor like the theme button. */
+.build-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.build-controls button {
+  font: inherit;
+  color: var(--ink);
+  background: var(--raised);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+.build-controls button:hover {
+  border-color: var(--muted);
+}
+
+.build-controls .build-start {
+  font-weight: 650;
+  color: #fff;
+  background: var(--launch);
+  border-color: transparent;
+}
+
+.build-controls .build-start.is-confirming {
+  background: var(--warn);
+}
+
+.build-status {
+  flex-basis: 100%;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.deck-build-controls {
+  position: fixed;
+  top: 14px;
+  right: 14px;
+  z-index: 5;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  padding: 8px 10px 8px 8px;
+  font: 600 14px/1.2 var(--sans);
+  background: var(--raised);
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+  opacity: 0.92;
+  transition: opacity 0.3s;
+}
+
+.deck-build-controls button {
+  border-radius: 999px;
+}
+
+.deck-build-controls .build-status {
+  flex-basis: auto;
+  text-align: right;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+body.is-idle .deck-build-controls {
+  opacity: 0;
+  pointer-events: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .bb-now::after,
   .doors-launch,
   .mascot *,
   .mascot *::before,
@@ -2306,8 +2685,7 @@ body.is-idle .deck-theme-button {
     display: none;
   }
 
-  .bb-fill,
-  .bb-now {
+  .bb-fill {
     transition: none;
   }
 }
@@ -3818,6 +4196,50 @@ body.is-idle .deck-theme-button {
   font: 600 15px/1.4 var(--mono);
   color: var(--muted);
 }
+/* Bottom row: the launch library card in the left corner, "Up next" on the right */
+.demo-foot {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 48px;
+}
+
+/* Launch library card, tucked into the bottom-left corner */
+.demo-ref {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 12px 24px 12px 12px;
+  background: var(--raised);
+  border: 1.5px solid var(--rule);
+  border-radius: 18px;
+  box-shadow: 0 12px 32px var(--shadow);
+}
+.demo-ref-copy {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+.demo-ref-copy .label {
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  color: var(--launch);
+}
+.demo-ref-copy strong {
+  font: 650 21px/1.25 var(--display);
+  letter-spacing: -0.01em;
+  color: var(--heading);
+}
+.demo-ref-copy a {
+  display: inline-block;
+  margin-top: 2px;
+  font: 600 16px/1.2 var(--mono);
+  color: var(--launch);
+  text-decoration: none;
+}
+.demo-ref .qr { gap: 0; }
+.demo-ref .qr figcaption { display: none; }
+
 .demo-next {
   justify-self: end;
   font: 500 20px/1.4 var(--head);

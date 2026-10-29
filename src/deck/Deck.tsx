@@ -8,6 +8,7 @@ import { useShared } from './shared';
 import { themeFromUrl, useTheme } from './theme';
 import { Presenter } from './Presenter';
 import { ThemeButton } from '../components/ThemeButton';
+import { BuildControls } from '../components/BuildControls';
 
 const last = slides.length - 1;
 const clamp = (i: number) => Math.min(last, Math.max(0, i));
@@ -162,6 +163,7 @@ function Audience() {
       </Stage>
       {/* Outside the stage, so it never lands on a slide; it hides with the idle cursor */}
       <ThemeButton theme={theme} setTheme={setTheme} className="deck-theme-button" />
+      {slide.id === 'build-block' && <BuildControls className="deck-build-controls" />}
       {blackout && <div className="blackout" aria-label="Screen blanked. Press B to show." />}
     </main>
   );

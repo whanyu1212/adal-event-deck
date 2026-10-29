@@ -82,6 +82,11 @@ export function Doors() {
           <pre className="command">
             <code>{event.installCommand}</code>
           </pre>
+          <p className="doors-promo">
+            <span className="doors-promo-offer">{event.promo.offer}, free</span>
+            <code>{event.promo.code}</code>
+            <span>Sign up at {event.promo.signUpLabel} · valid until {event.promo.validUntil}</span>
+          </p>
           <p className="doors-docs">
             Getting started: <a href={event.links.docs} target="_blank" rel="noopener noreferrer" onDoubleClick={(e) => e.stopPropagation()}>docs.sylph.ai ↗</a>
           </p>
