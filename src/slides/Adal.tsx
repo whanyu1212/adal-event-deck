@@ -11,6 +11,13 @@ const features = [
   { title: 'Launch.', label: 'Story & visuals', caption: 'Give what you built a story and a visual.' },
 ];
 
+// Why GTM is a skill for everyone, not only founders. Always visible under the panels.
+const audiences = [
+  { who: 'Engineers', point: 'Ship it to real users.' },
+  { who: 'Students & job seekers', point: 'Show, don’t list.' },
+  { who: 'Anyone at work', point: 'Get the idea heard.' },
+];
+
 export function Adal({ step = 0 }: { step?: number }) {
   const calm = useReducedMotion();
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -39,9 +46,9 @@ export function Adal({ step = 0 }: { step?: number }) {
   };
 
   return (
-    <div className="slide tour-slide">
-      <EditorialHeader kicker="Meet your workflow" signature={['One project, one conversation', 'Build → Research → Launch']}>
-        From first change to <span className="welcome-title-accent"><Tight text="first impression." /></span>
+    <div className="slide tour-slide build-launch">
+      <EditorialHeader kicker="Why go-to-market matters" signature={['Building is easy now.', 'Being seen is the skill.']}>
+        Build + <span className="welcome-title-accent"><Tight text="Launch:" /></span> AdaL helps with both halves.
       </EditorialHeader>
       <div className="tour-panels">
         {features.map((feature, i) => (
@@ -146,6 +153,12 @@ export function Adal({ step = 0 }: { step?: number }) {
           </section>
         ))}
       </div>
+      <dl className="tour-audiences" aria-label="Go-to-market is not just for founders">
+        <dt>Not just for founders</dt>
+        {audiences.map((a) => (
+          <dd key={a.who}><span>{a.who}</span>{a.point}</dd>
+        ))}
+      </dl>
     </div>
   );
 }

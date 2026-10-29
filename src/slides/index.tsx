@@ -3,6 +3,7 @@ import { Doors } from './Doors';
 import { Welcome } from './Welcome';
 import { BuildClub } from './BuildClub';
 import { MeetAdal } from './MeetAdal';
+import { Changelog } from './Changelog';
 import { Adal } from './Adal';
 import { ModelChoice } from './ModelChoice';
 import { Skills } from './Skills';
@@ -56,11 +57,27 @@ Who we are, and how dashboard submission works. Every project should be submitte
     notes: `About 20–30 seconds. AdaL is named after Ada Lovelace, a pioneer of computer programming. Created by SylphAI. Keep the name story brief, then move to the three capabilities.`,
   },
   {
+    id: 'changelog',
+    title: 'AdaL has come a long way',
+    steps: 4,
+    render: (step) => <Changelog step={step} />,
+    notes: `About 45 seconds. Keep it humble: this is how AdaL grew from a terminal coding agent into a place to build and launch, one useful feature at a time. Don't quote release counts. Each key press reveals one period; pick one highlight from each instead of reading every bullet.
+Dec–Jan: a coding agent in the terminal, with resume, /compact, skills and Plan mode.
+Feb–Mar: parallel tool calls, subagents, image generation, headless mode; 1.0 shipped with Deep Research.
+Apr–Jun: the Cron agent, the AdaL Desktop preview with Review Agent, and Browser Use.
+Jul–Aug: the Agent SDK and custom tools, BYOAK for every provider, the @Skills Hub at atskills.one.
+Sep–Oct: capabilities (browser, video, autonomy auditor), social listening, Connectors, Desktop on Windows and Linux, and the full video producer.
+Bridge: everything you'll see tonight landed along that path. Source: https://docs.sylph.ai/changelog/`,
+  },
+  {
     id: 'adal',
-    title: 'From first change to first impression',
+    title: 'Build + Launch: AdaL helps with both halves',
     steps: 2,
     render: (step) => <Adal step={step} />,
-    notes: `Introduce three capabilities: write and check code, research competitors, and create launch content. Spend about one minute here.
+    notes: `About 1–1.5 minutes. Open with the why: building is easy now; being seen is the skill. GTM (go-to-market) means getting what you built in front of the people it's for.
+It isn't only a founder skill (the strip at the bottom): engineers need real users for side projects, open-source repos and internal tools; students and job seekers stand out with a live, explained project; anyone at work uses it to pitch an idea, know the audience and write the post.
+Then the how, one key press per panel: Build (write and check code), Research (competitor context), Launch (story and visuals; the video plays on the last step).
+Tonight counts too: a landing page, a post or a short video is a valid submission.
 In a second AdaL session, start the promo video and competitor research with the prepared prompts so they can run while you demonstrate the code change.`,
   },
   {
