@@ -54,7 +54,7 @@ export const event = {
     dashboard: 'https://campus.buildclub.ai/challenges/01a1895f-e141-7481-beaf-ebdd9d462b95', // Build Club challenge: enrol and submit here
     // Feedback survey ("Build Night Survey"), shown as a QR on the Close slide
     survey: 'https://docs.google.com/forms/d/e/1FAIpQLSeVleYeD1wS8aA4WdT2tVbiubpeZVk3Fh3uIE7RgKH_DJyfqA/viewform',
-    nextEvent: '', // next Build Club Singapore event
+    volunteers: 'https://chat.whatsapp.com/JLlGnTTg6N6K9RzW6k69NR?mode=gi_t', // Build Club SG Volunteers WhatsApp group
     community: 'https://adalagent.ai/community',
     // Big-brand launch videos remade with AdaL; shown on the live demo slide as video references.
     launchLibrary: 'https://adalagent.ai/launch-library',
