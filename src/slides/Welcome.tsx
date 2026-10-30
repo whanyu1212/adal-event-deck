@@ -47,7 +47,9 @@ export function Welcome() {
               <dt><FactIcon kind="wifi" />Wi-Fi</dt>
               <dd>
                 <span className="mono">{event.wifi.network}</span>
-                <span className="facts-password"><span className="facts-aside">Password</span> <span className="mono">{event.wifi.password}</span></span>
+                {event.wifi.password && (
+                  <span className="facts-password"><span className="facts-aside">Password</span> <span className="mono">{event.wifi.password}</span></span>
+                )}
               </dd>
             </div>
             <div className="fact-row">

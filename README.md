@@ -46,13 +46,13 @@ Use `npm run preview`, not a double-click on `dist/index.html`. The asset paths 
 | T | Switch between the light and dark theme (both windows follow) |
 | S / R / N / Shift+N | Show-and-tell only: start or pause the timer, reset it, next or previous presenter |
 
-**Meet AdaL** (slide 7) steps through seven key presses before the deck moves on: the Ada Lovelace
+**Meet AdaL** (slide 10) steps through seven key presses before the deck moves on: the Ada Lovelace
 beat, a run of her Note G program that stops on its bug and then fixes it, then Builds, Launches and
 Connects, then a scripted terminal. The presenter window shows "step 2 of 7". Pressing back from the next slide lands on the last step. Any slide can do this by
 setting `steps` in `src/slides/index.tsx` and reading the `step` its `render` receives.
 
 The audience and presenter windows stay in step through `localStorage`, so you can drive either one.
-Each slide has its own link (`#/17` is the build session), so a reload lands on the same slide.
+Each slide has its own link (`#/20` is the build session), so a reload lands on the same slide.
 
 ### Light or dark
 
@@ -72,12 +72,12 @@ whatever time zone your laptop is set to. To rehearse at a different time:
 - `?now=20:38` pretends it's 8:38pm on the night (24-hour time).
 - `?speed=30` runs the clock 30 times faster.
 
-For example, http://localhost:4321/?now=20:38&speed=10#/17 shows the build session just before the time warning.
+For example, http://localhost:4321/?now=20:38&speed=10#/20 shows the build session just before the time warning.
 The show-and-tell timer always uses real time.
 
 ### Start the build session by hand
 
-The build session (slide 17) follows `buildBlock.start` in `src/event.ts` (7:30) on its own.
+The build session (slide 20) follows `buildBlock.start` in `src/event.ts` (7:30) on its own.
 If the programme runs over, press **Start 1:15:00 countdown** when the room actually starts building.
 The button is in the presenter window, and in the top-right corner of the audience screen when you move the mouse.
 The full 75 minutes then run from that moment in every window, and a reload keeps them.
