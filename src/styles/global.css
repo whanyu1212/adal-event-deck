@@ -1144,9 +1144,14 @@ body.is-idle .deck-theme-button {
   max-width: 36ch;
 }
 
-.facts-password {
+.facts-password,
+.facts-note {
   display: block;
   margin-top: 12px;
+}
+
+.facts-note {
+  color: var(--muted);
 }
 
 .facts-aside {

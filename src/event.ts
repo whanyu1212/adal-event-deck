@@ -41,8 +41,8 @@ export const event = {
   date: '2026-10-30',
   venue: 'SMU SCIS1, Seminar Room 2-2',
 
-  // Leave the password empty for an open network; the Welcome slide then shows the name only
-  wifi: { network: 'SMU_Visitor', password: '' },
+  // Leave the password empty for an open network; the Welcome slide then shows the name and the note only
+  wifi: { network: 'SMU_Visitor', password: '', note: 'Free to use, no password' },
   help: "Raise a hand and we'll come to you.",
   photography:
     "We're taking photos tonight. If you'd rather not be in them, tell a host and we'll keep you out.",
