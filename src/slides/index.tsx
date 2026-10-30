@@ -9,6 +9,7 @@ import { ModelChoice } from './ModelChoice';
 import { Skills } from './Skills';
 import { Connectors } from './Connectors';
 import { Capabilities } from './Capabilities';
+import { VideoTutorial } from './VideoTutorial';
 import { DemoPart } from './DemoPart';
 import { Redeem } from './Redeem';
 import { BuildBlock } from './BuildBlock';
@@ -125,9 +126,24 @@ The animation can be stopped or replayed; reduced-motion mode starts with a stil
     notes: `About 45–60 seconds. Show that AdaL fits both terminal-native developers and visual product builders.
 On the left: AdaL CLI gives you fast keyboard-first coding, git worktrees, headless mode and the SDK.
 On the right: the AdaL Desktop recording shows issue triage in a project chat, with projects, Schedule and Connectors in the visual workspace.
-Both recordings play at 10× speed, with native playback controls. Reduced-motion mode starts paused. Advance once to go straight to the live demo.
+Both recordings play at 10× speed, with native playback controls. Reduced-motion mode starts paused. Advance once to move on to the Video Producer how-to.
 Type /ide inside the CLI to open the current project in AdaL Desktop. Both share the same account, models, skills and project sessions.
 Sources: https://docs.sylph.ai/getting-started/desktop-app and https://docs.sylph.ai/features/video-producer/`,
+  },
+  {
+    id: 'video-producer',
+    title: 'Video Producer: make a launch video by asking',
+    steps: 3,
+    render: (step) => <VideoTutorial step={step} />,
+    notes: `About 1.5–2 minutes, right before the live demo. Teach the four steps so people can make their own launch video in the build session; the demo then shows a real project going through them. One key press per step. The example is the Ember coffee teaser from the docs, so the prompt in step 1 is the one that made the screenshots in steps 2–4.
+01 Ask: say what you want in plain words. Give the facts up front: length, sizes (16:9, 9:16, 1:1), language, and the one thing viewers should remember. Nothing to install, no plugin, no API key.
+02 AdaL produces it: it writes a plan (project.md), generates or cuts the clips (shots, voice-over, music, sound effects, animated titles), edits and renders. Titles are drawn with code (Remotion), so text stays sharp. Each generated clip is short (roughly 3–30 s depending on the model); AdaL edits clips into the full video.
+03 Revise by chatting: "make the reveal slower", "swap the hero shot". Each message makes a new version, shown as a card on the Canvas. Compare two versions side by side, or ask "go back to v4".
+04 Export & share: the .mp4 in videos/ is always the current version; Export on the Canvas gives a full-quality render of any version. Everything lives in the project folder (default ~/AdaL/Videos/).
+Tips strip: give the facts up front; bring your own footage, screen recordings and logo (drop them in the project folder and mention them); change one thing per message so each version is one clear change.
+Point at the Launch library card: big-brand launch videos (ElevenLabs, Cursor, Supabase, Anthropic and more) remade with AdaL as exact replicas, in AdaL style or rebranded, each tagged with the model used. Good starting points for their own prompts.
+Worth knowing if asked: the Files panel, Canvas, Media tab and Videos sidebar are in AdaL Desktop. Video, image and voice generation use AdaL credits, even with your own API keys (BYOAK). Default video model is Gemini Omni Flash; ask for "minimax-h3" or "seedance-2.5" by name. Renders take minutes, so start the video early in the build session.
+Source: https://docs.sylph.ai/features/video-producer/`,
   },
   {
     id: 'demo-build',
@@ -135,7 +151,7 @@ Sources: https://docs.sylph.ai/getting-started/desktop-app and https://docs.sylp
     render: () => <DemoPart />,
     notes: `About 15 min. Follow one project through a unified code-to-launch session, not separate Build and Launch tracks. Explain that the multi-minute research and video renders were pre-run so we can inspect the full session without the render wait, then finish the launch live.
 01 · Build & verify: update the app, inspect the diff in AdaL with Review Agent, and verify the live UI directly in AdaL's browser.
-02 · Research & produce: walk through the pre-run Deep Research competitor and audience findings, inspect Image Studio visuals, and trace the Video Producer timeline from v1 to v3. Be explicit that these heavy lifts were prepared, not rendered live on stage. Point at the Launch library card (adalagent.ai/launch-library): big-brand launch videos (ElevenLabs, Cursor, Supabase, Anthropic and more) remade with AdaL as exact replicas, in AdaL style or rebranded, each tagged with the model used. Good references when people make their own promo video tonight.
+02 · Research & produce: walk through the pre-run Deep Research competitor and audience findings, inspect Image Studio visuals, and trace the Video Producer timeline from v1 to v3. Be explicit that these heavy lifts were prepared, not rendered live on stage. The room has just seen the four Video Producer steps on the previous slide, so point back to them as you open the project: the plan, the timeline, the versions on the Canvas.
 03 · Launch: write the launch copy from the same session context (optionally with an @skills writing skill, if it fits on the day), then post through connected X, LinkedIn, Slack and Notion. Confirm destinations and content before publishing.
 Bridge to the next slide: now it is your turn for the 75-minute build session.`,
   },
