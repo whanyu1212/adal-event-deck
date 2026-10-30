@@ -2,6 +2,9 @@ import type { ReactElement } from 'react';
 import { Doors } from './Doors';
 import { Welcome } from './Welcome';
 import { BuildClub } from './BuildClub';
+import { BuildClubIntro } from './BuildClubIntro';
+import { Hosts } from './Hosts';
+import { Community } from './Community';
 import { MeetAdal } from './MeetAdal';
 import { Changelog } from './Changelog';
 import { Adal } from './Adal';
@@ -46,11 +49,38 @@ Helpers: install, sign-in, credits. Point non-coders to the browser-based IDE if
 Cover Wi-Fi, how to get help, photography and the opt-out, then walk through tonight's schedule. The highlighted row follows the clock.`,
   },
   {
-    id: 'build-club',
+    id: 'hosts',
+    title: "Meet tonight's speakers",
+    render: () => <Hosts />,
+    notes: `About a minute, straight after the welcome. Each speaker says one line about themselves, left to right: Wu Hanyu (AdaL), Haorui Chen (Build Club), Darrius Ng (SMU AI Club), Sharan Balaji Manickamoorthy (NUS Product Club).
+Then a quick shout-out to the people behind the scenes who aren't on the slide: "Big thanks to Jax from AdaL and the Build Club city leads, and the SMU AI Club and NUS Product Club teams, for making tonight happen."
+The QR codes open each speaker's LinkedIn, so leave it up a few seconds for people to scan.`,
+  },
+  {
+    id: 'build-club-intro',
     title: 'Build Club Singapore',
+    render: () => <BuildClubIntro />,
+    notes: `7:05, Build Club, about 2 minutes of the 5.
+Who we are: the most collaborative AI learning community, 70K+ members in 60+ cities. In Singapore we run build nights, VC firesides and industry roundtables.
+Two to point at: the Go-to-Market Builders AI Build Lab in June, where 200+ people built with Singtel, SMU AI Club and four tool partners (Manus, Exa, Mem0, Vapi); and the sold-out VC Fireside with Aspire in September (Golden Gate, Openspace, GHARAGE, Monk's Hill).
+Then move on to tonight's challenge.`,
+  },
+  {
+    id: 'community',
+    title: 'AI for everyone in Singapore',
+    render: () => <Community />,
+    notes: `About a minute, light touch, straight after the Build Club intro.
+This year Build Club has been working closely with Singapore enterprises to bring AI adoption to the public, not just the tech crowd. Singtel is one of the main partners: with Singtel we've run Train-the-Trainer sessions for the trainers of the SkillsFuture AI courses, and there are more training sessions, community events and AI building sessions coming.
+One practical thing to take home: Singtel AI Pass. Sign up for a selected SkillsFuture AI course (SWDA-supported) and you get about S$600 of premium AI tools free: Manus, Canva, Hailuo AI, Otter.ai, MiniMax and Akool. All of them for 3 months, then keep your favourite for 3 more. The QR has the details and the list of eligible courses.`,
+  },
+  {
+    id: 'build-club',
+    title: "Tonight's Build Club challenge",
     render: () => <BuildClub />,
-    notes: `7:05, Build Club, 5 min.
-Who we are, and how dashboard submission works. Every project should be submitted by 8:45.`,
+    notes: `About 3 minutes, straight after the Build Club intro.
+How the Build Club challenge works: scan, enrol, submit by 8:45. Every project should be submitted by 8:45.
+Prizes from AdaL: 1 year of Pro for 1st (also featured on AdaL's channels), 6 months for 2nd, 3 months for 3rd. Everyone who posts a video tagging @adalagent and drops the link in the AdaL Discord gets +1 month. Stress that a post tagging @adalagent is required to claim any credits.
+7:10: hand over to SMU AI Club for 5 minutes, then NUS Product Club at 7:15 for 5 minutes, then AdaL from 7:20.`,
   },
   {
     id: 'meet-adal',

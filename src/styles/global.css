@@ -1189,7 +1189,7 @@ body.is-idle .deck-theme-button {
   position: relative;
   display: grid;
   grid-template-columns: 100px 1fr;
-  padding: 14px 0 14px 32px;
+  padding: 8px 0 8px 32px;
   font-size: 28px;
 }
 
@@ -1306,21 +1306,46 @@ body.is-idle .deck-theme-button {
 /* Build Club */
 
 .build-club {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 120px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  padding-bottom: 150px;
 }
 
 .build-club-main {
   display: grid;
+  align-content: start;
   gap: 28px;
 }
 
 .build-club h2 {
-  margin-top: 36px;
   padding-bottom: 14px;
   border-bottom: 1.5px solid var(--rule);
+}
+
+.build-club-submit {
+  margin-top: 36px;
+}
+
+.build-club-submit-row {
+  display: flex;
+  align-items: start;
+  gap: 40px;
+  margin-top: 28px;
+}
+
+.build-club .steps {
+  flex: 1;
+  gap: 24px;
+  font-size: 28px;
+}
+
+.build-club .steps li {
+  grid-template-columns: 48px 1fr;
+}
+
+.build-club .qr {
+  flex-shrink: 0;
 }
 
 .steps {
@@ -1344,6 +1369,376 @@ body.is-idle .deck-theme-button {
   font-family: var(--display);
   font-weight: 700;
   letter-spacing: -0.03em;
+  color: var(--launch);
+}
+
+/* Prizes fill the right half of the challenge slide */
+
+.prizes {
+  display: grid;
+  grid-template-rows: auto 1fr auto auto;
+  padding: 40px 48px;
+  background: var(--raised);
+  border: 1.5px solid var(--rule);
+  border-radius: 22px;
+  box-shadow: 0 12px 32px var(--shadow);
+}
+
+.prize-places {
+  display: grid;
+  align-content: space-evenly;
+  gap: 20px;
+  padding: 0;
+  list-style: none;
+}
+
+.prize-places li,
+.prize-bonus {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  align-items: baseline;
+}
+
+.prize-rank {
+  font-family: var(--display);
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--launch);
+}
+
+.prize-places strong,
+.prize-bonus strong {
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--heading);
+}
+
+.prize-places small,
+.prize-bonus small {
+  display: block;
+  margin-top: 6px;
+  font-size: 24px;
+  line-height: 1.35;
+  color: var(--muted);
+}
+
+.prize-bonus {
+  padding-top: 28px;
+  border-top: 1.5px solid var(--rule);
+}
+
+.prize-bonus .prize-rank {
+  font-size: 30px;
+}
+
+.prize-claim {
+  margin-top: 24px;
+  font-size: 24px;
+  line-height: 1.35;
+  color: var(--muted);
+}
+
+/* Meet your hosts: four cards side by side */
+
+.hosts {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 36px;
+  padding-bottom: 150px;
+}
+
+.hosts-thanks {
+  font-size: 24px;
+  text-align: center;
+  color: var(--muted);
+}
+
+.hosts-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  min-height: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 24px 24px;
+  text-align: center;
+  background: var(--raised);
+  border: 1.5px solid var(--rule);
+  border-radius: 20px;
+  box-shadow: 0 12px 32px var(--shadow);
+}
+
+.host-photo {
+  width: 150px;
+  height: 150px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--launch);
+}
+
+/* Same height row for every logo, so the names line up across the cards */
+.host-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 72px;
+  margin-bottom: 16px;
+}
+
+.host-logo .logo-build-club {
+  height: 72px;
+}
+
+.host-logo .logo-adal {
+  height: 40px;
+}
+
+.host-logo .logo-smuai {
+  height: 52px;
+}
+
+.host-logo .logo-nus-product-club {
+  height: 50px;
+}
+
+.host-name {
+  margin-top: 20px;
+  font-family: var(--head);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--heading);
+}
+
+.host-role {
+  display: grid;
+  gap: 4px;
+  margin-top: 12px;
+  font-size: 22px;
+  line-height: 1.35;
+  text-wrap: balance;
+  color: var(--muted);
+}
+
+.host .qr {
+  margin-top: auto;
+  padding-top: 18px;
+}
+
+/* AI for everyone in Singapore: the story on the left, Singtel AI Pass on the right */
+
+.community {
+  display: grid;
+  grid-template-columns: 1fr 820px;
+  gap: 64px;
+  padding-bottom: 150px;
+}
+
+.community-main {
+  display: grid;
+  align-content: start;
+  gap: 22px;
+}
+
+.community .title {
+  font-size: 64px;
+}
+
+.community .lead {
+  max-width: 34ch;
+  font-size: 30px;
+}
+
+.community-training {
+  display: grid;
+  gap: 12px;
+  margin: 8px 0 0;
+}
+
+.community-training img {
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 1.5px solid var(--rule);
+  box-shadow: 0 12px 32px var(--shadow);
+}
+
+.community-training figcaption {
+  display: grid;
+  gap: 2px;
+  font-size: 21px;
+  line-height: 1.35;
+  text-wrap: balance;
+  color: var(--muted);
+}
+
+.community-training strong {
+  font-family: var(--head);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--heading);
+}
+
+.ai-pass {
+  display: grid;
+  align-self: start;
+  gap: 18px;
+  margin: 0;
+}
+
+/* The screenshot is a white web page, so it keeps a white frame in both themes */
+.ai-pass-shot {
+  width: 100%;
+  border-radius: 16px;
+  border: 1.5px solid var(--rule);
+  background: #fff;
+  box-shadow: 0 12px 32px var(--shadow);
+}
+
+.ai-pass-foot {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.ai-pass-foot p {
+  flex: 1;
+  font-size: 24px;
+  line-height: 1.4;
+  text-wrap: balance;
+  color: var(--ink);
+}
+
+/* Build Club intro: who we are on the left, past Singapore events on the right */
+
+.bc-intro {
+  display: grid;
+  grid-template-columns: 600px 1fr;
+  gap: 80px;
+  padding-bottom: 150px;
+}
+
+.bc-intro-main {
+  display: grid;
+  align-content: start;
+  gap: 28px;
+}
+
+.bc-intro .title {
+  font-size: 80px;
+}
+
+.bc-intro .lead {
+  max-width: 24ch;
+}
+
+.bc-stats {
+  display: flex;
+  gap: 56px;
+  margin-top: 8px;
+}
+
+.bc-stats dt {
+  font-family: var(--display);
+  font-size: 72px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--launch);
+}
+
+.bc-stats dd {
+  margin-top: 6px;
+  font-size: 24px;
+  color: var(--muted);
+}
+
+.bc-activities {
+  margin-top: 12px;
+}
+
+.bc-activities .label {
+  padding-bottom: 12px;
+  border-bottom: 1.5px solid var(--rule);
+}
+
+.bc-activities ul {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+  padding: 0;
+  list-style: none;
+  font-size: 28px;
+}
+
+.bc-activities li::before {
+  content: '→ ';
+  color: var(--launch);
+}
+
+.bc-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  grid-template-rows: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: 24px;
+  min-height: 0;
+}
+
+.bc-photo {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 12px;
+  min-height: 0;
+  margin: 0;
+}
+
+.bc-photo.is-hero {
+  grid-column: 1 / -1;
+}
+
+.bc-photo img {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1.5px solid var(--rule);
+  box-shadow: 0 12px 32px var(--shadow);
+}
+
+.bc-photo figcaption {
+  display: grid;
+  gap: 2px;
+  font-size: 20px;
+  line-height: 1.35;
+  color: var(--muted);
+}
+
+.bc-photo figcaption strong {
+  font-family: var(--head);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--heading);
+}
+
+.bc-photo-date {
+  font-family: var(--head);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
   color: var(--launch);
 }
 

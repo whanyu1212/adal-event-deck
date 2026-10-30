@@ -5,7 +5,7 @@ import QRCode from 'qrcode';
  * A QR code drawn as SVG in the browser, so it needs no network.
  * With no link yet, it shows an empty frame saying so.
  */
-export function QR({ value, size = 240, caption }: { value: string; size?: number; caption: string }) {
+export function QR({ value, size = 240, caption }: { value: string; size?: number; caption?: string }) {
   const path = useMemo(() => {
     if (!value) return null;
     const { modules } = QRCode.create(value, { errorCorrectionLevel: 'M' });
@@ -38,7 +38,7 @@ export function QR({ value, size = 240, caption }: { value: string; size?: numbe
           Link coming
         </div>
       )}
-      <figcaption>{caption}</figcaption>
+      {caption && <figcaption>{caption}</figcaption>}
     </figure>
   );
 }
