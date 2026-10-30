@@ -62,7 +62,7 @@ The QR codes open each speaker's LinkedIn, so leave it up a few seconds for peop
     render: () => <BuildClubIntro />,
     notes: `7:05, Build Club, about 2 minutes of the 5.
 Who we are: the most collaborative AI learning community, 70K+ members in 60+ cities. In Singapore we run build nights, VC firesides and industry roundtables.
-Two to point at: the Go-to-Market Builders AI Build Lab in June, where 200+ people built with Singtel, SMU AI Club and four tool partners (Manus, Exa, Mem0, Vapi); and the sold-out VC Fireside with Aspire in September (Golden Gate, Openspace, GHARAGE, Monk's Hill).
+Three to point at: The Great AI Showcase in May, our Singapore launch hosted at Singtel, with an industry roundtable (Lightspeed SEA, AI Collective, Singtel, Build Club) and startup speed demos; the Go-to-Market Builders AI Build Lab in June, where 200+ people built with Singtel, SMU AI Club and four tool partners (Manus, Exa, Mem0, Vapi); and the sold-out VC Fireside with Aspire in September (Golden Gate, Openspace, GHARAGE, Monk's Hill).
 Then move on to tonight's challenge.`,
   },
   {
