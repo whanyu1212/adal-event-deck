@@ -5,6 +5,7 @@ import { BuildClub } from './BuildClub';
 import { BuildClubIntro } from './BuildClubIntro';
 import { Hosts } from './Hosts';
 import { Community } from './Community';
+import { SmuaiEvents, SmuaiHook, SmuaiWhat } from './Smuai';
 import { MeetAdal } from './MeetAdal';
 import { Changelog } from './Changelog';
 import { Adal } from './Adal';
@@ -81,6 +82,30 @@ One practical thing to take home: Singtel AI Pass. Sign up for a selected Skills
 How the Build Club challenge works: scan, enrol, submit by 8:45. Every project should be submitted by 8:45.
 Prizes from AdaL: 1 year of Pro for 1st (also featured on AdaL's channels), 6 months for 2nd, 3 months for 3rd. Everyone who posts a video tagging @adalagent and drops the link in the AdaL Discord gets +1 month. Stress that a post tagging @adalagent is required to claim any credits.
 7:10: hand over to SMU AI Club for 5 minutes, then NUS Product Club at 7:15 for 5 minutes, then AdaL from 7:20.`,
+  },
+  {
+    id: 'smuai-hook',
+    title: 'SMU AI Club',
+    render: () => <SmuaiHook />,
+    notes: `7:10, SMU AI Club, 5 minutes for these three slides (from their "SMUAI CCA Promo" deck).
+Open with the hook: AI won't replace you, but someone using AI might.`,
+  },
+  {
+    id: 'smuai-what',
+    title: 'What is SMUAI?',
+    render: () => <SmuaiWhat />,
+    notes: `SMU AI Club: a student-led think tank sharing ideas in AI, giving students the tools, knowledge and opportunities to excel in AI. Think. Build. Lead.`,
+  },
+  {
+    id: 'smuai-events',
+    title: 'SMUAI Featured Events AY25/26',
+    render: () => <SmuaiEvents />,
+    notes: `Four featured events this academic year, one per kind:
+Sharing + Networking: SMUAI x Openclaw Agentic Night, students, founders, developers and industry leaders on agentic AI.
+Hackathons: SMUAI x AI Builders Agent Forge Hackathon, teams building AI-powered apps with industry mentors.
+Workshops: AWS Bedrock Workshop, hands-on building of AI agents on Amazon Bedrock.
+Career: NCS Company Tour, a visit to NCS HQ on AI innovation and tech careers.
+At 7:15, hand over to NUS Product Club.`,
   },
   {
     id: 'meet-adal',

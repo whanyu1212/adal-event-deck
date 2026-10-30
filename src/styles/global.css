@@ -1615,6 +1615,337 @@ body.is-idle .deck-theme-button {
   color: var(--ink);
 }
 
+/* SMU AI Club's three slides at 7:10: this deck's page, with the blue shapes from their deck */
+
+.smuai-hook,
+.smuai-what,
+.smuai-events {
+  --smuai-blue: #1a86d6;
+  --smuai-circle: #5aaef7;
+  overflow: hidden;
+}
+
+[data-theme='dark'] :is(.smuai-hook, .smuai-what, .smuai-events) {
+  --smuai-blue: #38b6ff;
+  --smuai-circle: #3d8fe0;
+}
+
+.smuai-shapes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.smuai-circle,
+.smuai-halo,
+.smuai-dots {
+  position: absolute;
+}
+
+.smuai-circle,
+.smuai-halo {
+  border-radius: 50%;
+}
+
+.smuai-circle {
+  background: var(--smuai-circle);
+}
+
+.smuai-halo {
+  background: color-mix(in srgb, var(--smuai-blue) 9%, transparent);
+}
+
+.smuai-dots {
+  width: 140px;
+  height: 80px;
+  background-image: radial-gradient(circle, var(--smuai-blue) 2.4px, transparent 2.9px);
+  background-size: 20px 20px;
+  opacity: 0.6;
+}
+
+.is-hook .smuai-circle {
+  width: 1000px;
+  height: 1000px;
+  right: -240px;
+  top: 600px;
+}
+
+.is-hook .smuai-halo {
+  width: 1240px;
+  height: 1240px;
+  left: -360px;
+  top: -560px;
+}
+
+.is-hook .smuai-dots.is-a {
+  right: 140px;
+  top: 40px;
+}
+
+.is-hook .smuai-dots.is-b {
+  left: 40px;
+  top: 560px;
+  width: 60px;
+}
+
+.is-what .smuai-circle {
+  width: 460px;
+  height: 460px;
+  right: -200px;
+  top: -170px;
+}
+
+.is-what .smuai-halo {
+  width: 1100px;
+  height: 1100px;
+  left: 410px;
+  top: 720px;
+}
+
+.is-what .smuai-dots.is-a {
+  left: 40px;
+  top: 40px;
+}
+
+.is-what .smuai-dots.is-b {
+  right: 40px;
+  top: 560px;
+  width: 100px;
+}
+
+.is-events .smuai-circle {
+  width: 320px;
+  height: 320px;
+  right: -140px;
+  top: -140px;
+}
+
+.is-events .smuai-halo {
+  width: 900px;
+  height: 900px;
+  left: -420px;
+  top: 640px;
+}
+
+.is-events .smuai-dots.is-a {
+  right: 220px;
+  top: 52px;
+}
+
+.is-events .smuai-dots.is-b {
+  display: none;
+}
+
+.smuai-logo img {
+  height: 64px;
+  width: auto;
+}
+
+.smuai-title {
+  position: relative;
+  font-size: 88px;
+  line-height: 1.04;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--smuai-blue);
+}
+
+.smuai-pill {
+  padding: 10px 30px;
+  border-radius: 999px;
+  background: var(--smuai-circle);
+  font-family: var(--head);
+  font-size: 28px;
+  font-weight: 700;
+  color: #0b1e3b;
+}
+
+.smuai-hook {
+  padding-top: 170px;
+}
+
+.smuai-hook-main {
+  position: relative;
+  display: grid;
+  justify-items: start;
+  gap: 30px;
+}
+
+.smuai-hook-main .smuai-logo {
+  margin-bottom: 20px;
+}
+
+.smuai-hook-title {
+  font-size: 112px;
+  line-height: 1.02;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--smuai-blue);
+}
+
+.smuai-hook-sub {
+  font-family: var(--head);
+  font-size: 54px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--heading);
+}
+
+.smuai-motto {
+  font-size: 30px;
+  color: var(--muted);
+}
+
+.smuai-laptop {
+  position: absolute;
+  right: 140px;
+  bottom: 150px;
+  width: 700px;
+  filter: drop-shadow(0 24px 30px rgba(11, 30, 59, 0.28));
+}
+
+.smuai-laptop > img {
+  display: block;
+  width: 100%;
+}
+
+/* Sits on the laptop art's blank screen */
+.smuai-laptop-screen {
+  position: absolute;
+  left: 14%;
+  right: 25.2%;
+  top: 9%;
+  bottom: 34.4%;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 26px;
+}
+
+.smuai-laptop-screen img {
+  width: 330px;
+}
+
+.smuai-laptop-screen .smuai-pill {
+  font-size: 24px;
+  padding: 8px 26px;
+}
+
+.smuai-what {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 40px;
+  padding-bottom: 150px;
+  text-align: center;
+}
+
+.smuai-what-lead {
+  position: relative;
+  max-width: 44ch;
+  font-size: 40px;
+  line-height: 1.4;
+  color: var(--ink);
+}
+
+.smuai-what-lead strong {
+  font-weight: 700;
+  color: var(--heading);
+}
+
+.smuai-aim {
+  position: relative;
+  max-width: 1400px;
+  margin-top: 20px;
+  padding: 34px 56px;
+  border: 3px solid var(--smuai-blue);
+  border-radius: 18px;
+  background: var(--raised);
+  box-shadow: 0 12px 32px var(--shadow);
+}
+
+.smuai-aim p {
+  font-size: 36px;
+  line-height: 1.45;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+.smuai-bulb {
+  position: absolute;
+  left: -3px;
+  top: -66px;
+  display: grid;
+  place-items: center;
+  width: 66px;
+  height: 66px;
+  border-radius: 14px 14px 0 0;
+  background: var(--smuai-blue);
+  color: #fff;
+}
+
+.smuai-bulb svg {
+  width: 40px;
+  height: 40px;
+}
+
+.smuai-what > .smuai-pill {
+  position: relative;
+  margin-top: 8px;
+}
+
+.smuai-events {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  padding-bottom: 150px;
+}
+
+.smuai-events ul {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto auto;
+  align-content: center;
+  gap: 26px 36px;
+  padding: 0;
+  list-style: none;
+}
+
+.smuai-events li {
+  display: grid;
+  grid-row: span 3;
+  grid-template-rows: subgrid;
+  justify-items: center;
+  text-align: center;
+}
+
+.smuai-events h2 {
+  align-self: end;
+  font-family: var(--head);
+  font-size: 32px;
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--smuai-blue);
+}
+
+.smuai-events li img {
+  width: 100%;
+  aspect-ratio: 750 / 536;
+  object-fit: cover;
+  border: 5px solid var(--smuai-circle);
+  border-radius: 14px;
+  box-shadow: 0 12px 32px var(--shadow);
+}
+
+.smuai-events li p {
+  font-family: var(--head);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-wrap: balance;
+  color: var(--heading);
+}
+
 /* Build Club intro: who we are on the left, past Singapore events on the right */
 
 .bc-intro {

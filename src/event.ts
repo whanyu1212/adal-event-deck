@@ -39,9 +39,10 @@ export const event = {
 
   // All times are Singapore time (UTC+8) on this date, whatever the laptop's time zone is.
   date: '2026-10-30',
-  venue: '[Venue]',
+  venue: 'SMU SCIS1, Seminar Room 2-2',
 
-  wifi: { network: '[Wi-Fi network]', password: '[Wi-Fi password]' },
+  // Leave the password empty for an open network; the Welcome slide then shows the name only
+  wifi: { network: 'SMU_Visitor', password: '' },
   help: "Raise a hand and we'll come to you.",
   photography:
     "We're taking photos tonight. If you'd rather not be in them, tell a host and we'll keep you out.",
@@ -158,6 +159,31 @@ export const event = {
       linkedin: 'https://www.linkedin.com/in/sharan-balaji-manickamoorthy/',
     },
   ],
+
+  // SMU AI Club's 7:10 segment: the first three slides of their "SMUAI CCA Promo" deck, on this
+  // deck's background with their blue, and without the event descriptions. The laptop art and
+  // event photos come from their PDF and live in public/media/smuai/.
+  smuai: {
+    hook: ["AI Won't Replace You.", 'But Someone Using AI Might.'],
+    motto: 'SMUAI | Learn. Build. Connect. Explore.',
+    tagline: 'Think. Build. Lead.',
+    laptop: 'media/smuai/laptop.png',
+    what: [
+      { text: 'SMUAI is a ' },
+      { text: 'student-led think tank', strong: true },
+      { text: ' facilitating the sharing of ideas in the field of ' },
+      { text: 'Artificial Intelligence', strong: true },
+      { text: '.' },
+    ],
+    aim: 'We aim to cultivate and spread ideas about AI, and provide students with the tools, knowledge, and opportunities to excel in AI.',
+    eventsTitle: 'Featured Events AY25/26',
+    events: [
+      { category: 'Sharing + Networking', name: 'SMUAI x Openclaw Agentic Night', photo: 'media/smuai/agentic-night.jpg' },
+      { category: 'Hackathons', name: 'SMUAI x AI Builders Agent Forge Hackathon', photo: 'media/smuai/agent-forge-hackathon.jpg' },
+      { category: 'Workshops', name: 'AWS Bedrock Workshop', photo: 'media/smuai/aws-bedrock-workshop.jpg' },
+      { category: 'Career', name: 'NCS Company Tour', photo: 'media/smuai/ncs-company-tour.jpg' },
+    ],
+  },
 
   // "AI for everyone in Singapore" slide, after the Build Club intro. AI Pass facts are from
   // singtel.com/personal/products-services/lifestyle-services/ai-pass; tools may change.
