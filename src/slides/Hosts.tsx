@@ -31,12 +31,11 @@ export function Hosts() {
                   <span key={line}>{line}</span>
                 ))}
               </p>
-              <QR value={h.linkedin} size={150} />
+              <QR value={h.linkedin} size={170} />
             </li>
           );
         })}
       </ul>
-      <p className="hosts-thanks">{event.teamThanks}</p>
     </div>
   );
 }
