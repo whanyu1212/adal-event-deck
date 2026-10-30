@@ -3,6 +3,7 @@ import { Stage } from '../components/Stage';
 import { event } from '../event';
 import { useDeck } from './Deck';
 import { ThemeButton } from '../components/ThemeButton';
+import { BuildControls } from '../components/BuildControls';
 import { clockLabel, useNow } from './time';
 
 /**
@@ -50,6 +51,8 @@ export function Presenter() {
             <p key={i}>{line}</p>
           ))}
         </div>
+
+        {slide.id === 'build-block' && <BuildControls />}
 
         <div className="pr-controls">
           <button onClick={back} disabled={index === 0 && step === 0}>

@@ -3,6 +3,9 @@ import { QR } from '../components/QR';
 
 const s = event.showAndTell;
 
+// What people can type off the screen: no scheme, no ?pwd= (the passcode sits beside it).
+const shortLink = s.zoom.link.replace(/^https?:\/\//, '').replace(/\?.*$/, '');
+
 export function ShowAndTell() {
   return (
     <div className="slide show-and-tell">
@@ -20,7 +23,7 @@ export function ShowAndTell() {
       <aside className="st-join" aria-label="Join the Zoom">
         <p className="st-join-label">Scan to join</p>
         <QR value={s.zoom.link} size={300} caption="Zoom" />
-        <p className="st-join-link">{s.zoom.link || '[Zoom link]'}</p>
+        <p className="st-join-link">{shortLink || '[Zoom link]'}</p>
         <dl className="st-join-meta">
           <div><dt>Meeting ID</dt><dd>{s.zoom.meetingId}</dd></div>
           <div><dt>Passcode</dt><dd>{s.zoom.passcode}</dd></div>

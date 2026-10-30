@@ -10,6 +10,7 @@ import { Skills } from './Skills';
 import { Connectors } from './Connectors';
 import { Capabilities } from './Capabilities';
 import { DemoPart } from './DemoPart';
+import { Redeem } from './Redeem';
 import { BuildBlock } from './BuildBlock';
 import { ShowAndTell } from './ShowAndTell';
 import { Close } from './Close';
@@ -134,28 +135,44 @@ Sources: https://docs.sylph.ai/getting-started/desktop-app and https://docs.sylp
     render: () => <DemoPart />,
     notes: `About 15 min. Follow one project through a unified code-to-launch session, not separate Build and Launch tracks. Explain that the multi-minute research and video renders were pre-run so we can inspect the full session without the render wait, then finish the launch live.
 01 · Build & verify: update the app, inspect the diff in AdaL with Review Agent, and verify the live UI directly in AdaL's browser.
-02 · Research & produce: walk through the pre-run Deep Research competitor and audience findings, inspect Image Studio visuals, and trace the Video Producer timeline from v1 to v3. Be explicit that these heavy lifts were prepared, not rendered live on stage.
+02 · Research & produce: walk through the pre-run Deep Research competitor and audience findings, inspect Image Studio visuals, and trace the Video Producer timeline from v1 to v3. Be explicit that these heavy lifts were prepared, not rendered live on stage. Point at the Launch library card (adalagent.ai/launch-library): big-brand launch videos (ElevenLabs, Cursor, Supabase, Anthropic and more) remade with AdaL as exact replicas, in AdaL style or rebranded, each tagged with the model used. Good references when people make their own promo video tonight.
 03 · Launch: write the launch copy from the same session context (optionally with an @skills writing skill, if it fits on the day), then post through connected X, LinkedIn, Slack and Notion. Confirm destinations and content before publishing.
 Bridge to the next slide: now it is your turn for the 75-minute build session.`,
+  },
+  {
+    id: 'redeem',
+    title: 'Promo code: 1 month of AdaL Pro',
+    render: () => <Redeem />,
+    notes: `About 1–2 minutes, right before the build session starts. Give the room a moment to scan before you move on.
+Code: BUILDCLUBSINGAPORE-BJEC. One month of AdaL Pro, valid until 13 November. The QR opens adal.sylph.ai/sign-up.
+New users: sign up, then enter the code at "Have a promo or referral code?" when picking a plan. Existing users: Settings → Billing → "Have a promo code?" → pick the current plan → "Add promo code to my plan" (applies to the next bill).
+Each code can be redeemed once per account, and a subscription can only hold one active promo, so anyone already on a promo (e.g. the student discount) may see it rejected. Helpers can sort those out during the build session.
+The code also shows on the Doors slide and in the corner of the build session, so latecomers can still find it. When the room is ready, move on and press Start on the build session if the schedule has slipped.`,
   },
   {
     id: 'build-block',
     title: 'Build session',
     render: () => <BuildBlock />,
-    notes: `7:30 to 8:45. Leave this up for the whole build session.
-8:15 open show-and-tell sign-ups (5 spots). 8:40 time warning. 8:45 submissions close.`,
+    notes: `75 minutes. Leave this up for the whole build session.
+It follows the 7:30 schedule by itself. If the demo runs over, press "Start 1:15:00 countdown" (here, or top-right of the audience screen when you move the mouse) when the room actually starts: the full 75 minutes run from that moment, in every window, and survive a reload. Restarting a running session takes a second click. "Back to schedule" undoes it.
+Sign-ups open 45 min in, the time warning comes 5 min before the end, and submissions close at the end; the slide shows the actual times.
+The rocket flies from Earth to the AdaL planet as the time runs, blasting asteroids; it boosts in the last five minutes and celebrates at the end.`,
   },
   {
     id: 'show-and-tell',
     title: 'Show-and-tell',
     render: () => <ShowAndTell />,
     notes: `8:45, 30 min, five 5-minute demos. Presenters join the Zoom from the QR and share their screen; no fixed line-up.
-Set the Zoom link, meeting ID and passcode in src/event.ts (showAndTell.zoom) before the night. Keep time on your phone; there's no on-screen timer.`,
+The QR uses the full join link with the passcode built in, so scanning joins straight away. Typing it in: us04web.zoom.us/j/72913725219, meeting ID 729 1372 5219, passcode 0mz7PB.
+Meeting chat: https://us04web.zoom.us/launch/jc/72913725219
+Zoom details live in src/event.ts (showAndTell.zoom). Keep time on your phone; there's no on-screen timer.`,
   },
   {
     id: 'close',
     title: 'Close',
     render: () => <Close />,
-    notes: `9:15 to 9:30. Survey QR, shout-outs, freebies if confirmed, next Build Club event, group photo.`,
+    notes: `9:15 to 9:30. Survey QR, shout-outs, freebies if confirmed, next Build Club event, group photo.
+Survey first, before the photo: "phones out, two minutes", and wait while people scan the left QR. It opens the Build Night Survey: https://docs.google.com/forms/d/e/1FAIpQLSeVleYeD1wS8aA4WdT2tVbiubpeZVk3Fh3uIE7RgKH_DJyfqA/viewform
+Plug the AdaL Global Ambassador Program (card on the right): host events, make content, or both. Ambassadors get a free AdaL plan, merch, event budget and codes for their guests. The QR opens the application form; adalagent.ai/community has the details.`,
   },
 ];

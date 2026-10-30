@@ -52,8 +52,38 @@ export const event = {
     discord: 'https://discord.gg/adalagent',
     docs: 'https://docs.sylph.ai',
     dashboard: '', // Build Club dashboard submission link
-    survey: '', // feedback survey
+    // Feedback survey ("Build Night Survey"), shown as a QR on the Close slide
+    survey: 'https://docs.google.com/forms/d/e/1FAIpQLSeVleYeD1wS8aA4WdT2tVbiubpeZVk3Fh3uIE7RgKH_DJyfqA/viewform',
     nextEvent: '', // next Build Club Singapore event
+    community: 'https://adalagent.ai/community',
+    // Big-brand launch videos remade with AdaL; shown on the live demo slide as video references.
+    launchLibrary: 'https://adalagent.ai/launch-library',
+    // Short link to the ambassador application form; it redirects to
+    // docs.google.com/forms/d/e/1FAIpQLSceSZL96VmgscNGlykBs58sOrx9C9MpbK6TcuRz-yAfArAlWA/viewform.
+    // The short link makes a sparser QR code that scans from further back.
+    ambassadorForm: 'https://forms.gle/GmvT1v7Xym3DEZFa8',
+  },
+
+  // The promo code: its own slide after the live demo, plus small reminders on the Doors
+  // and Build session slides. Redeeming, per docs.sylph.ai/getting-started/pricing-and-usage:
+  // new users enter it at "Have a promo or referral code?" after signing up; existing users
+  // go to Settings → Billing → "Have a promo code?". One redemption per account.
+  promo: {
+    code: 'BUILDCLUBSINGAPORE-BJEC',
+    offer: '1 month of AdaL Pro',
+    validUntil: '13 Nov', // 13 November 2026
+    signUp: 'https://adal.sylph.ai/sign-up', // where the QR codes go
+    signUpLabel: 'adal.sylph.ai/sign-up',
+    install: 'adalagent.ai/install',
+  },
+
+  // The ambassador card on the Close slide. Wording follows the FAQ on adalagent.ai/community.
+  ambassador: {
+    title: ['Global', 'Ambassador', 'Program'],
+    pitch: 'Host events, make content, or both.',
+    perks: 'Free AdaL plan, merch, event budget and codes for your guests.',
+    apply: 'Scan to apply',
+    url: 'adalagent.ai/community',
   },
 
   schedule: [
@@ -82,9 +112,11 @@ export const event = {
     // How many demos fit in the 30-minute slot. No fixed names: people join the Zoom and share.
     slots: 5,
     zoom: {
-      link: '', // paste the Zoom join link here; the QR code appears once it is set
-      meetingId: '[Meeting ID]',
-      passcode: '[Passcode]',
+      // The join link carries the passcode, so scanning the QR goes straight in.
+      link: 'https://us04web.zoom.us/j/72913725219?pwd=qT7tASVGqc41Rt6Cnz9W62fVR0fZq4.1',
+      chatLink: 'https://us04web.zoom.us/launch/jc/72913725219', // meeting chat
+      meetingId: '729 1372 5219',
+      passcode: '0mz7PB',
     },
   },
 
