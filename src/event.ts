@@ -211,11 +211,11 @@ export const event = {
         detail: '200+ builders with Singtel, SMU AI Club, Manus, Exa, Mem0 and Vapi',
       },
       {
-        photo: 'photos/gtm-build-lab-roundtable.jpg',
-        alt: 'Industry roundtable panel on stage at the build lab',
-        date: '12 Jun',
-        title: 'Industry roundtable',
-        detail: 'Singtel, Lightspeed and AI Collective, same night',
+        photo: 'photos/great-ai-showcase-roundtable.jpg',
+        alt: 'Industry roundtable on stage at The Great AI Showcase, Build Club’s Singapore launch',
+        date: '21 May',
+        title: 'The Great AI Showcase',
+        detail: 'Our Singapore launch at Singtel, with Lightspeed and AI Collective',
       },
       {
         photo: 'photos/aspire-vc-fireside.jpg',
