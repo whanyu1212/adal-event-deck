@@ -1,9 +1,5 @@
 import { EditorialHeader } from '../components/EditorialHeader';
-import { QR } from '../components/QR';
 import { Tight } from '../components/Tight';
-import { event } from '../event';
-
-const launchLibrary = event.links.launchLibrary;
 
 const stages = [
   {
@@ -60,28 +56,9 @@ export function DemoPart() {
         ))}
       </ol>
 
-      <div className="demo-foot">
-        {/* Corner card: references for making a promo video */}
-        <div className="demo-ref">
-          <QR value={launchLibrary} size={112} caption="Launch library" />
-          <div className="demo-ref-copy">
-            <p className="label">Video references · Launch library</p>
-            <strong>Big-brand launch videos, remade with AdaL.</strong>
-            <a
-              href={launchLibrary}
-              target="_blank"
-              rel="noopener noreferrer"
-              onDoubleClick={(e) => e.stopPropagation()}
-            >
-              {launchLibrary.replace(/^https?:\/\//, '')} ↗
-            </a>
-          </div>
-        </div>
-
-        <p className="demo-next">
-          Up next <span aria-hidden="true">→</span> <strong>Your 75-minute build session</strong>
-        </p>
-      </div>
+      <p className="demo-next">
+        Up next <span aria-hidden="true">→</span> <strong>Your 75-minute build session</strong>
+      </p>
     </div>
   );
 }
