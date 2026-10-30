@@ -97,7 +97,7 @@ Keep each track prompt to about 90 characters. The build-session screen fits two
 
 Still to fill in before the night:
 
-- [ ] Wi-Fi network and password
+- [x] Wi-Fi network (SMU_Visitor, free, no password)
 - [x] Build Club challenge link (QR on the challenge and build-session slides)
 - [x] Feedback survey link and Build Club SG Volunteer Group link (close slide)
 - [x] One line about Build Club Singapore

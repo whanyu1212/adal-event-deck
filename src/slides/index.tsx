@@ -47,7 +47,7 @@ Helpers: install, sign-in, credits. Point non-coders to the browser-based IDE if
     title: 'Welcome & tonight',
     render: () => <Welcome />,
     notes: `7:00, host, 5 min.
-Cover Wi-Fi, how to get help, photography and the opt-out, then walk through tonight's schedule. The highlighted row follows the clock.`,
+Get everyone onto SMU_Visitor (free, no password), cover how to get help, photography and the opt-out, then walk through tonight's schedule. The highlighted row follows the clock.`,
   },
   {
     id: 'hosts',

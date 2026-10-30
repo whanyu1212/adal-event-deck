@@ -46,10 +46,11 @@ export function Welcome() {
             <div className="fact-row">
               <dt><FactIcon kind="wifi" />Wi-Fi</dt>
               <dd>
-                <span className="mono">{event.wifi.network}</span>
+                <span className="facts-aside">Join</span> <span className="mono">{event.wifi.network}</span>
                 {event.wifi.password && (
                   <span className="facts-password"><span className="facts-aside">Password</span> <span className="mono">{event.wifi.password}</span></span>
                 )}
+                {event.wifi.note && <span className="facts-note">{event.wifi.note}</span>}
               </dd>
             </div>
             <div className="fact-row">
