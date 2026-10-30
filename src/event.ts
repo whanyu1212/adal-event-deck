@@ -124,7 +124,6 @@ export const event = {
 
   // "Meet tonight's speakers" slide, left to right. Photos live in public/photos/hosts/.
   // `logo` is the className of the community's entry in `logos` above.
-  teamThanks: '…with the AdaL, Build Club, SMU AI Club and NUS Product Club teams who made tonight happen.',
   team: [
     {
       name: 'Wu Hanyu',

@@ -1445,15 +1445,9 @@ body.is-idle .deck-theme-button {
 
 .hosts {
   display: grid;
-  grid-template-rows: auto 1fr auto;
-  gap: 36px;
+  grid-template-rows: auto 1fr;
+  gap: 44px;
   padding-bottom: 150px;
-}
-
-.hosts-thanks {
-  font-size: 24px;
-  text-align: center;
-  color: var(--muted);
 }
 
 .hosts-grid {
@@ -1478,8 +1472,8 @@ body.is-idle .deck-theme-button {
 }
 
 .host-photo {
-  width: 150px;
-  height: 150px;
+  width: 168px;
+  height: 168px;
   flex-shrink: 0;
   border-radius: 50%;
   object-fit: cover;
@@ -1491,12 +1485,12 @@ body.is-idle .deck-theme-button {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 72px;
-  margin-bottom: 16px;
+  height: 84px;
+  margin-bottom: 20px;
 }
 
 .host-logo .logo-build-club {
-  height: 72px;
+  height: 84px;
 }
 
 .host-logo .logo-adal {
