@@ -99,7 +99,7 @@ Still to fill in before the night:
 
 - [ ] Wi-Fi network and password
 - [x] Build Club challenge link (QR on the challenge and build-session slides)
-- [ ] Feedback survey link and next Build Club event link (close slide)
+- [x] Feedback survey link and Build Club SG Volunteer Group link (close slide)
 - [x] One line about Build Club Singapore
 - [ ] AdaL one-liner, confirmed with SylphAI
 - [ ] Show-and-tell Zoom link, meeting ID and passcode (`showAndTell.zoom` in `src/event.ts`)

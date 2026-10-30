@@ -16,7 +16,7 @@ export function Close() {
         <div className="close-codes">
           <QR value={event.links.survey} size={260} caption="Tell us how tonight went" />
           <QR value={event.links.discord} size={260} caption="Keep building in the AdaL Discord" />
-          <QR value={event.links.nextEvent} size={260} caption="Come to the next Build Club" />
+          <QR value={event.links.volunteers} size={260} caption="Join the Build Club SG Volunteer Group" />
         </div>
       </div>
 

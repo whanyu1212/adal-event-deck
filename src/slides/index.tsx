@@ -217,7 +217,8 @@ Zoom details live in src/event.ts (showAndTell.zoom). Keep time on your phone; t
     id: 'close',
     title: 'Close',
     render: () => <Close />,
-    notes: `9:15 to 9:30. Survey QR, shout-outs, freebies if confirmed, next Build Club event, group photo.
+    notes: `9:15 to 9:30. Survey QR, shout-outs, freebies if confirmed, Build Club SG Volunteer Group, group photo.
+The right-hand QR joins the Build Club SG Volunteers WhatsApp group: invite anyone who'd like to help run the next events.
 Survey first, before the photo: "phones out, two minutes", and wait while people scan the left QR. It opens the Build Night Survey: https://docs.google.com/forms/d/e/1FAIpQLSeVleYeD1wS8aA4WdT2tVbiubpeZVk3Fh3uIE7RgKH_DJyfqA/viewform
 Plug the AdaL Global Ambassador Program (card on the right): host events, make content, or both. Ambassadors get a free AdaL plan, merch, event budget and codes for their guests. The QR opens the application form; adalagent.ai/community has the details.`,
   },
