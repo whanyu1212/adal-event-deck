@@ -51,7 +51,7 @@ export const event = {
   links: {
     discord: 'https://discord.gg/adalagent',
     docs: 'https://docs.sylph.ai',
-    dashboard: '', // Build Club dashboard submission link
+    dashboard: 'https://campus.buildclub.ai/challenges/01a1895f-e141-7481-beaf-ebdd9d462b95', // Build Club challenge: enrol and submit here
     // Feedback survey ("Build Night Survey"), shown as a QR on the Close slide
     survey: 'https://docs.google.com/forms/d/e/1FAIpQLSeVleYeD1wS8aA4WdT2tVbiubpeZVk3Fh3uIE7RgKH_DJyfqA/viewform',
     nextEvent: '', // next Build Club Singapore event
@@ -90,7 +90,9 @@ export const event = {
     { time: '18:30', title: 'Doors open & food' },
     { time: '19:00', title: 'Welcome' },
     { time: '19:05', title: 'Build Club Singapore' },
-    { time: '19:10', title: 'What is AdaL, and a live demo' },
+    { time: '19:10', title: 'SMU AI Club' },
+    { time: '19:15', title: 'NUS Product Club' },
+    { time: '19:20', title: 'What is AdaL, and a live demo' },
     { time: '19:30', title: 'Build session' },
     { time: '20:45', title: 'Show-and-tell' },
     { time: '21:15', title: 'Feedback, shout-outs and group photo' },
@@ -120,8 +122,110 @@ export const event = {
     },
   },
 
+  // "Meet tonight's speakers" slide, left to right. Photos live in public/photos/hosts/.
+  // `logo` is the className of the community's entry in `logos` above.
+  teamThanks: '…with the AdaL, Build Club, SMU AI Club and NUS Product Club teams who made tonight happen.',
+  team: [
+    {
+      name: 'Wu Hanyu',
+      org: 'AdaL',
+      logo: 'logo-adal',
+      role: ['AdaL Ambassador in Singapore', 'Senior Data Scientist @ Micron'],
+      photo: 'photos/hosts/wu-hanyu.jpg',
+      linkedin: 'https://www.linkedin.com/in/hanyu-wu-6a610b165/',
+    },
+    {
+      name: 'Haorui Chen',
+      org: 'Build Club',
+      logo: 'logo-build-club',
+      role: ['Build Club City Lead', 'Forward Deployed Engineer @ Singtel'],
+      photo: 'photos/hosts/haorui-chen.jpg',
+      linkedin: 'https://www.linkedin.com/in/haorui-chen-834187247/',
+    },
+    {
+      name: 'Darrius Ng',
+      org: 'SMU AI Club',
+      logo: 'logo-smuai',
+      role: ['SMU AI Club Research Lead', 'Data Scientist @ GovTech'],
+      photo: 'photos/hosts/darrius-ng.jpg',
+      linkedin: 'https://www.linkedin.com/in/darriusng/',
+    },
+    {
+      name: 'Sharan Balaji Manickamoorthy',
+      org: 'NUS Product Club',
+      logo: 'logo-nus-product-club',
+      role: ['President, NUS Product Club', 'Co-founder @ BoardingPass'],
+      photo: 'photos/hosts/sharan-balaji-manickamoorthy.jpg',
+      linkedin: 'https://www.linkedin.com/in/sharan-balaji-manickamoorthy/',
+    },
+  ],
+
+  // "AI for everyone in Singapore" slide, after the Build Club intro. AI Pass facts are from
+  // singtel.com/personal/products-services/lifestyle-services/ai-pass; tools may change.
+  // The page screenshot in public/media/singtel/ was taken from that page on 30 Oct 2026.
+  community: {
+    lead: 'This year we work closely with Singapore enterprises to bring AI to the public.',
+    training: {
+      image: 'media/singtel/train-the-trainer-cartoon.jpg',
+      alt: 'Cartoon of the Singtel AI Pass Train-the-Trainer session: two speakers in front of the title slide, trainers seated below',
+      title: 'Train-the-Trainer with Singtel',
+      detail: 'For the trainers behind the SkillsFuture AI courses. More sessions and events coming.',
+    },
+    aiPass: {
+      url: 'https://www.singtel.com/personal/products-services/lifestyle-services/ai-pass',
+      how: 'Free with selected SWDA-supported SkillsFuture AI courses. Scan for the eligible courses.',
+      screenshot: 'media/singtel/ai-pass-page.jpg',
+      alt: 'Singtel AI Pass page: around S$600 of AI tools through SWDA-supported AI courses. Seven tools: Manus, Canva, Hailuo AI, Otter.ai, MiniMax Code, MiniMax Audio and Akool, free for 3 months, then keep your favourite for 3 more.',
+    },
+  },
+
+  // Prizes on the "Tonight's challenge" slide, as offered by the AdaL team.
+  // AdaL grants credits only after the builder posts about it, so keep the claim line.
+  prizes: {
+    places: [
+      { rank: '1st', prize: '1 year of AdaL Pro', extra: '$240 value · featured on AdaL channels' },
+      { rank: '2nd', prize: '6 months of AdaL Pro' },
+      { rank: '3rd', prize: '3 months of AdaL Pro' },
+    ],
+    bonus: {
+      prize: '+1 month of AdaL Pro',
+      how: 'Post your video tagging @adalagent and drop the link in Discord.',
+    },
+    claim: 'To claim any prize, post about your build and tag @adalagent.',
+  },
+
+  // Build Club intro slide. Member and city counts are from Build Club's own event copy.
   buildClub: {
-    about: '[One line on who Build Club Singapore is]',
+    about: 'The most collaborative AI learning community in the world.',
+    stats: [
+      { value: '70K+', label: 'members' },
+      { value: '60+', label: 'cities' },
+    ],
+    activities: ['Build nights and hack labs', 'VC and founder firesides', 'Industry roundtables'],
+    // Past Singapore events. Photos live in public/photos/. The first one is shown largest.
+    past: [
+      {
+        photo: 'photos/gtm-build-lab-group.jpg',
+        alt: 'The room at the Go-to-Market Builders AI Build Lab, everyone waving at the camera',
+        date: '12 Jun',
+        title: 'Go-to-Market Builders AI Build Lab',
+        detail: '200+ builders with Singtel, SMU AI Club, Manus, Exa, Mem0 and Vapi',
+      },
+      {
+        photo: 'photos/gtm-build-lab-roundtable.jpg',
+        alt: 'Industry roundtable panel on stage at the build lab',
+        date: '12 Jun',
+        title: 'Industry roundtable',
+        detail: 'Singtel, Lightspeed and AI Collective, same night',
+      },
+      {
+        photo: 'photos/aspire-vc-fireside.jpg',
+        alt: 'VC panel seated in a circle at Aspire HQ',
+        date: '4 Sep',
+        title: 'VC Fireside with Aspire',
+        detail: "Golden Gate, Openspace, GHARAGE and Monk's Hill on APAC startups in 2027",
+      },
+    ],
   },
 
   adal: {
